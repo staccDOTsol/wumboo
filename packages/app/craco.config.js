@@ -50,28 +50,20 @@ module.exports = {
           "@toruslabs/solana-embed": path.resolve(
             "../../node_modules/@toruslabs/solana-embed"
           ),
+          "@irys/query": path.resolve("../../node_modules/@irys/query"),
           // For local dev with linked packages:
           ...(process.env.LINKED_DEV
             ? {
                 "@chakra-ui/react": path.resolve(
                   "../../node_modules/@chakra-ui/react"
-                ),
-                "@strata-foundation/react": path.resolve(
-                  "./node_modules/@strata-foundation/react"
-                ),
-                "@strata-foundation/spl-token-bonding": path.resolve(
-                  "./node_modules/@strata-foundation/spl-token-bonding"
-                ),
-                "@strata-foundation/spl-token-collective": path.resolve(
-                  "./node_modules/@strata-foundation/spl-token-collective"
-                ),
-                "@strata-foundation/spl-utils": path.resolve(
-                  "./node_modules/@strata-foundation/spl-utils"
-                ),
+                )
               }
             : {}),
         },
       },
     },
+  },
+  typescript: {
+    enableTypeChecking: false
   },
 };
