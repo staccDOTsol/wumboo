@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@coral-xyz/anchor": "0.29.0",
+    "@solana/buffer-layout": "^4.0.1",
     "@strata-foundation/web3-token-auth": "^3.10.3",
     "react-icons": "^4.3.1"
   }

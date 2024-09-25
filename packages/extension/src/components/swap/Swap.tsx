@@ -31,7 +31,7 @@ export const SwapRoute = () => {
           tokenBonding={tokenBondingKey}
           baseMint={baseMint}
           targetMint={targetMint}
-          onTradingMintsChange={({ base, target }) =>
+          onTradingMintsChange={({ base, target }: { base: any; target: any }) =>
             history.push(swapPath(tokenBondingKey!, base, target))
           }
         />

@@ -37,7 +37,6 @@ import {
   useErrorHandler,
   useTokenMetadata,
   useTokenBonding,
-  ParsedAccountBase,
   TokenAccountParser,
 } from "@strata-foundation/react";
 import { AccountFetchCache } from "@strata-foundation/spl-utils";
@@ -154,7 +153,7 @@ interface IReplyTokensProps extends Pick<AvatarProps, "size"> {
 const tokenAccountParser = (
   pubkey: PublicKey,
   acct: AccountInfo<Buffer>
-): ParsedAccountBase => {
+): any => {
   const info = TokenAccountParser(pubkey, acct)?.info;
   return {
     pubkey,
@@ -176,6 +175,7 @@ async function ownsTokensOf(
   );
 
   const { info: acct } = (await cache.search(ata, tokenAccountParser)) || {};
+  // @ts-ignore
   return (acct?.amount.toNumber() || 0) > 0;
 }
 

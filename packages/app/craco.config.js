@@ -10,11 +10,11 @@ module.exports = {
         esbuildLoaderOptions: {
           // Optional. Defaults to auto-detect loader.
           loader: "tsx", // Set the value to 'tsx' if you use typescript
-          target: "es2015",
+          target: "ESNext", // or "ESNext"
         },
         esbuildMinimizerOptions: {
           // Optional. Defaults to:
-          target: "es2015",
+          target: "ESNext", // or "ESNext"
           css: true, // if true, OptimizeCssAssetsWebpackPlugin will also be replaced by esbuild.
         },
         skipEsbuildJest: false, // Optional. Set to true if you want to use babel for jest tests,
@@ -23,6 +23,11 @@ module.exports = {
             ".ts": "ts",
             ".tsx": "tsx",
           },
+        },
+        // Add the following configuration
+        esbuildConfig: {
+          target: "ESNext", // or "ESNext"
+          lib: ["DOM", "DOM.Iterable", "ESNext"],
         },
       },
     },

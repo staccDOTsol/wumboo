@@ -22,7 +22,6 @@ import {
   WalletProvider,
 } from "@solana/wallet-adapter-react";
 import { MarketplaceSdkProvider } from "@strata-foundation/marketplace-ui/src";
-import { tokenAuthFetchMiddleware } from "@strata-foundation/web3-token-auth";
 
 export const getToken = (endpoint: string) => async () => {
   if (endpoint.includes("genesysgo")) {
@@ -74,9 +73,6 @@ export const ContextProviders: React.FC = ({ children }) => {
         endpoint={SOLANA_API_URL}
         config={{
           commitment: "confirmed",
-          fetchMiddleware: tokenAuthFetchMiddleware({
-            getToken: getToken(SOLANA_API_URL),
-          }),
         }}
       >
         <ErrorHandlerProvider onError={onError}>

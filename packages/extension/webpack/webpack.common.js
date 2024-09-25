@@ -20,7 +20,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new ESBuildMinifyPlugin({
-        target: "es2015",
+        target: "ESNext",
       }),
     ],
   },
