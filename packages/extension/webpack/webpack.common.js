@@ -39,6 +39,14 @@ module.exports = {
         loader: "esbuild-loader",
         options: {
           loader: "tsx",
+          tsconfigRaw: {
+            compilerOptions: {
+              noEmit: false,
+              skipLibCheck: true,
+              noImplicitAny: false,
+              strict: false,
+            },
+          },
         },
       },
       {
