@@ -21,12 +21,11 @@ import { DrawerProvider } from "@/contexts/drawerContext";
 import { InjectedWalletAdapter } from "@/utils/wallets";
 import toast from "react-hot-toast";
 import { HistoryContextProvider } from "../utils/history";
-import * as Sentry from "@sentry/react";
 import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
-import { MarketplaceSdkProvider } from "@strata-foundation/marketplace-ui/src";
+import { MarketplaceSdkProvider } from "@strata-foundation/marketplace-ui";
 
 export const getToken = (endpoint: string) => async () => {
   if (endpoint.includes("genesysgo")) {
@@ -59,7 +58,6 @@ export const ContextProviders: FC = ({ children }) => {
   const onError = useCallback(
     (error: Error) => {
       console.error(error);
-      Sentry.captureException(error);
       if (
         error.message?.includes(
           "Attempt to debit an account but found no record of a prior credit."
@@ -95,7 +93,7 @@ export const ContextProviders: FC = ({ children }) => {
   return (
     <ConfigProvider>
       <ConnectionProvider
-        endpoint={SOLANA_API_URL}
+        endpoint={"https://rpc.ironforge.network/mainnet?apiKey=01HRZ9G6Z2A19FY8PR4RF4J4PW"}
         config={{
           commitment: "confirmed",
         }}

@@ -8,12 +8,12 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
-import { numberWithCommas } from "@strata-foundation/marketplace-ui/src";
+import { numberWithCommas } from "strata-foundation-marketplace-ui-2";
 import {
   useReserveAmount,
   useTokenBondingFromMint,
   useTokenMetadata,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import React from "react";
 
 export const BountyCard = ({

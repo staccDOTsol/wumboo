@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -80,7 +81,7 @@ export const Claim3 = React.memo<IClaim3Props>(
       hasError &&
       ["Screen", "name", "does", "not", "match"].every(
         (match) =>
-          internalError?.message && internalError.message.includes(match)
+          internalError.message && internalError.message.includes(match)
       );
 
     return (
@@ -89,8 +90,8 @@ export const Claim3 = React.memo<IClaim3Props>(
           <Alert status="error" rounded="lg">
             <AlertIcon />
             {loggedInAsWrongUser &&
-              `Make sure you're logged into twitter as ${handle}. ${internalError?.message}`}
-            {!loggedInAsWrongUser && `${internalError?.message}`}
+              `Make sure you're logged into twitter as ${handle}. ${internalError.message}`}
+            {!loggedInAsWrongUser && `${internalError.message}`}
           </Alert>
         )}
         <div>

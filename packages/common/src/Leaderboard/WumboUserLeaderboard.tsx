@@ -3,7 +3,7 @@ import { useAsync } from "react-async-hook";
 import { PublicKey } from "@solana/web3.js";
 import { Center, Box, Flex, Icon } from "@chakra-ui/react";
 import { HiChevronUp, HiChevronDown } from "react-icons/hi";
-import { useErrorHandler } from "@strata-foundation/react";
+import { useErrorHandler } from "strata-foundation-react-2";
 import { Leaderboard, LeaderboardNumber } from "../Leaderboard";
 import { Spinner } from "../Spinner";
 

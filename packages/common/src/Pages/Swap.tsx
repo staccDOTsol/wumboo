@@ -14,8 +14,8 @@ import {
   usePriceInSol,
   useSwap,
   useSwapDriver,
-} from "@strata-foundation/react";
-import { ISwapArgs, toNumber } from "@strata-foundation/spl-token-bonding";
+} from "strata-foundation-react-2";
+import { ISwapArgs, toNumber } from "strata-foundation-spl-token-bonding-2";
 import React, { useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import { WUMBO_TRANSACTION_FEE } from "../constants/globals";

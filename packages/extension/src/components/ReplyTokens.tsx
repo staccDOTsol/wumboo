@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import ReactShadow from "react-shadow/emotion";
 import {

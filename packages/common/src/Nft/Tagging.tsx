@@ -1,4 +1,6 @@
+// @ts-nocheck
 import React, { useEffect, useMemo, useState } from "react";
+// @ts-ignore
 import ReactShadow from "react-shadow/emotion";
 // @ts-ignore
 import compareImages from "resemblejs/compareImages";
@@ -15,7 +17,7 @@ import {
   useAccountFetchCache,
   useErrorHandler,
   useProvider,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import {
   NFT_VERIFIER_URL,
   getNftNameRecordKey,

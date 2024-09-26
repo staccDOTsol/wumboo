@@ -5,7 +5,7 @@ import {
   useMint,
   useMintTokenRef,
   useTokenMetadata,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import { Confirmation } from "../Confirmation";
 import React from "react";
 import { useReverseTwitter, sample } from "../utils";

@@ -1,9 +1,9 @@
 import { Flex } from "@chakra-ui/react";
-import { useBondingPricing, usePriceInUsd } from "@strata-foundation/react";
+import { useBondingPricing, usePriceInUsd } from "strata-foundation-react-2";
 import {
   BondingPricing,
   ITokenBonding,
-} from "@strata-foundation/spl-token-bonding";
+} from "strata-foundation-spl-token-bonding-2";
 import React from "react";
 import { useHistory } from "react-router-dom";
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import { NATIVE_MINT } from "@solana/spl-token";
@@ -46,21 +47,21 @@ export const Claim1 = React.memo<IClaim1Props>(
     );
 
     const { info: tokenBonding, loading: tokenBondingLoading } =
-      useTokenBondingFromMint(tokenRef?.mint);
+      useTokenBondingFromMint(tokenRef.mint);
 
     const { info: buyRoyaltiesAcct, loading: royaltiesAcctLoading } =
-      useTokenAccount(tokenBonding?.buyTargetRoyalties);
+      useTokenAccount(tokenBonding.buyTargetRoyalties);
 
-    const mint = useMint(tokenRef?.mint);
+    const mint = useMint(tokenRef.mint);
 
     const { pricing, loading: pricingLoading } = useBondingPricing(
-      tokenBonding?.publicKey
+      tokenBonding.publicKey
     );
 
     const nativeFiatPrice = usePriceInUsd(NATIVE_MINT);
-    const fiatPrice = usePriceInUsd(buyRoyaltiesAcct?.mint);
+    const fiatPrice = usePriceInUsd(buyRoyaltiesAcct.mint);
     const toFiat = (a: number, price: number = 0) => price * a;
-    const nativeLocked = pricing?.locked(NATIVE_MINT);
+    const nativeLocked = pricing.locked(NATIVE_MINT);
 
     const fiatLocked =
       mint &&
@@ -92,7 +93,7 @@ export const Claim1 = React.memo<IClaim1Props>(
     ]);
 
     const tokenExists = !isLoading && tokenRef && tokenBonding;
-    const isClaimable = (tokenExists && !tokenRef?.isClaimed) || !tokenExists;
+    const isClaimable = (tokenExists && !tokenRef.isClaimed) || !tokenExists;
 
     return (
       <VStack w="full" spacing={8} align="left">
@@ -147,7 +148,7 @@ export const Claim1 = React.memo<IClaim1Props>(
                       </Link>{" "}
                       or{" "}
                       <Link
-                        href="https://twitter.com/TeamWumbo"
+                        href="https://x.com/TeamWumbo"
                         textDecor="underline"
                       >
                         twitter

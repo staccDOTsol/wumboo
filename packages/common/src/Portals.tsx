@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 interface IPrependedPortalProps {
   container: Element;
+  children: React.ReactNode;
 }
 
 export class PrependedPortal extends React.Component<IPrependedPortalProps> {
@@ -16,13 +17,14 @@ export class PrependedPortal extends React.Component<IPrependedPortalProps> {
     this.props.container.removeChild(this.portalContainer);
   }
 
-  render() {
+  render(): React.ReactPortal {
     return ReactDOM.createPortal(this.props.children, this.portalContainer);
   }
 }
 
 interface IAppendChildPortal {
   container: Element;
+  children: React.ReactNode;
 }
 
 export class AppendChildPortal extends React.Component<IAppendChildPortal> {
@@ -36,7 +38,7 @@ export class AppendChildPortal extends React.Component<IAppendChildPortal> {
     this.props.container.removeChild(this.portalContainer);
   }
 
-  render() {
+  render(): React.ReactPortal {
     return ReactDOM.createPortal(this.props.children, this.portalContainer);
   }
 }
@@ -50,6 +52,7 @@ interface IClearance {
 interface IFloatPortal {
   container: Element;
   clearance: IClearance;
+  children: React.ReactNode;
 }
 export function pxToNum(px: string): number {
   return Number(px.replace(/px/g, "")) || 0;
@@ -116,10 +119,8 @@ export class FloatPortal extends React.Component<IFloatPortal> {
       parentRect.left -
       pxToNum(parentComp.borderLeftWidth) +
       "px";
-    // @ts-ignore
-    this.div.style.height = this.props.container.height + "px";
-    // @ts-ignore
-    this.div.style.width = this.props.container.width + "px";
+    this.div.style.height = `${this.props.container.clientHeight}px`;
+    this.div.style.width = `${this.props.container.clientWidth}px`;
 
     this.div.appendChild(this.portalContainer);
     bigEnoughParent.append(this.div);
@@ -129,7 +130,7 @@ export class FloatPortal extends React.Component<IFloatPortal> {
     this.div?.remove();
   }
 
-  render() {
+  render(): React.ReactPortal {
     return ReactDOM.createPortal(this.props.children, this.portalContainer);
   }
 }

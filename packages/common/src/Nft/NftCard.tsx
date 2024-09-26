@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Flex, Box, Tag, Text, Center } from "@chakra-ui/react";
-import { ITokenWithMeta } from "@strata-foundation/spl-utils";
+import { ITokenWithMeta } from "trata-foundation-spl-utils-2";
 import { Nft } from "./Nft";
 
 export const NftCard = React.memo(

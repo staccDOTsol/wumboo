@@ -1,9 +1,9 @@
 import { useWallet } from "@solana/wallet-adapter-react";
-import { useProvider, useStrataSdks } from "@strata-foundation/react";
+import { useProvider, useStrataSdks } from "strata-foundation-react-2";
 import { useState } from "react";
 import { useAsyncCallback } from "react-async-hook";
 import { WUMBO_IDENTITY_SERVICE_URL } from "../constants/globals";
-import { executeRemoteTxn } from "@strata-foundation/spl-utils";
+import { executeRemoteTxn } from "trata-foundation-spl-utils-2";
 
 export type CreateArgs = {
   code?: string;

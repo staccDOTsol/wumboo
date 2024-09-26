@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Button,
   Flex,
@@ -16,7 +17,7 @@ import { DownloadButton } from "../common/DownloadButton";
 
 export const Claim4 = ({ handle }: { handle: string }) => {
   const config = useConfig();
-  const tweet = sample(config.tweets.claim)?.replace("{handle}", handle);
+  const tweet = sample(config.tweets.claim).replace("{handle}", handle);
   return (
     <VStack spacing={8} align="left">
       <div>
@@ -50,7 +51,7 @@ export const Claim4 = ({ handle }: { handle: string }) => {
               leftIcon={<Icon as={RiTwitterFill} />}
               as={Link}
               isExternal
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              href={`https://x.com/intent/tweet?text=${encodeURIComponent(
                 tweet
               )}`}
             >

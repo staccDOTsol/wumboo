@@ -25,7 +25,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/*"],
+      "matches": ["https://x.com/*"],
       "js": ["content_script.js"],
       "run_at": "document_end",
       "all_frames": true
@@ -43,13 +43,13 @@
         "wallet_proxy.js"
       ],
       "matches": [
-        "https://twitter.com/*"
+        "https://x.com/*"
       ]
     }
   ],
   "host_permissions": [
     "https://app.wum.bo/claim*",
     "http://localhost:3000/claim*",
-    "https://twitter.com/*"
+    "https://x.com/*"
   ]
 }

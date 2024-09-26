@@ -5,7 +5,7 @@ import {
   IMetadataExtension,
   MetadataFile,
   getImageFromMeta,
-} from "@strata-foundation/spl-utils";
+} from "trata-foundation-spl-utils-2";
 import { Stream, StreamPlayerApi } from "@cloudflare/stream-react";
 import { useIsExtension } from "../utils";
 import { useLocation } from "react-router-dom";

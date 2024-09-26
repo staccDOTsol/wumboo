@@ -8,8 +8,8 @@ import {
   Stack,
   StackDirection,
 } from "@chakra-ui/react";
-import { useErrorHandler, useTokenMetadata } from "@strata-foundation/react";
-import { ITokenBonding } from "@strata-foundation/spl-token-bonding";
+import { useErrorHandler, useTokenMetadata } from "strata-foundation-react-2";
+import { ITokenBonding } from "strata-foundation-spl-token-bonding-2";
 import { Spinner } from "./";
 import { PublicKey } from "@solana/web3.js";
 

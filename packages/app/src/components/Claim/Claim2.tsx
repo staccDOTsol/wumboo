@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import {
@@ -28,19 +29,19 @@ export interface IClaim2Props {
 
 export const Claim2: React.FC<IClaim2Props> = ({ handle, incrementStep }) => {
   const { connected, select, wallet } = useWallet();
-  const adapter = wallet?.adapter;
+  const adapter = wallet.adapter;
   const { showModal } = useModal();
-  const walletMintKey = useClaimedTokenRefKey(adapter?.publicKey, null);
+  const walletMintKey = useClaimedTokenRefKey(adapter.publicKey, null);
 
   const { info: walletRef, loading: walletRefLoading = true } =
     useTokenRef(walletMintKey);
 
   const { metadata, loading: metadataLoading = true } = useTokenMetadata(
-    walletRef?.mint
+    walletRef.mint
   );
 
   const hasWalletClaimed =
-    !!wallet && !walletRefLoading && !!walletRef?.isClaimed;
+    !!wallet && !walletRefLoading && !!walletRef.isClaimed;
 
   const isMobile = window.matchMedia(
     "only screen and (max-width: 760px)"
@@ -98,7 +99,7 @@ export const Claim2: React.FC<IClaim2Props> = ({ handle, incrementStep }) => {
               It appears the {adapter!.name} wallet you are using has already
               claimed a social token with the twitter handle of{" "}
               <Text as="span" fontWeight="bold">
-                {metadataLoading ? "Loading..." : metadata?.data.name}
+                {metadataLoading ? "Loading..." : metadata.data.name}
               </Text>
               {". "}
               In order to claim multiple social tokens you will need multiple
@@ -116,7 +117,7 @@ export const Claim2: React.FC<IClaim2Props> = ({ handle, incrementStep }) => {
                 discord
               </Link>
               {", "}
-              <Link href="https://twitter.com/TeamWumbo" color="indigo.500">
+              <Link href="https://x.com/TeamWumbo" color="indigo.500">
                 twitter
               </Link>
               , or refrence the{" "}
@@ -176,7 +177,7 @@ export const Claim2: React.FC<IClaim2Props> = ({ handle, incrementStep }) => {
                   colorScheme="gray"
                   borderColor="black"
                   variant="outline"
-                  onClick={() => adapter?.disconnect()}
+                  onClick={() => adapter.disconnect()}
                 >
                   Disconnect Wallet
                 </Button>

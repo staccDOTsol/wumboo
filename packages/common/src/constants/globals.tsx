@@ -1,6 +1,6 @@
 import { PublicKey } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID as SPL_TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import { SplTokenCollective } from "@strata-foundation/spl-token-collective";
+import { SplTokenCollective } from "strata-foundation-spl-token-collective-2";
 
 export const WUMBO_TRANSACTION_FEE: number = Number(
   process.env.REACT_APP_WUMBO_TRANSACTION_FEE!

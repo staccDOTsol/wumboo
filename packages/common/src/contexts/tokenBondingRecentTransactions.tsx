@@ -6,11 +6,11 @@ import {
   TokenBalance,
   TransactionSignature,
 } from "@solana/web3.js";
-import { useTokenBonding } from "@strata-foundation/react";
+import { useTokenBonding } from "strata-foundation-react-2";
 import {
   ITokenBonding,
   SplTokenBonding,
-} from "@strata-foundation/spl-token-bonding";
+} from "strata-foundation-spl-token-bonding-2";
 import React, { createContext } from "react";
 import { useAsync } from "react-async-hook";
 import { truthy } from "../utils";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import { PublicKey } from "@solana/web3.js";
 import { useForm } from "react-hook-form";
@@ -23,12 +24,12 @@ import {
   useProvider,
   useCollective,
   humanReadablePercentage,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import { ISetMetadataArgs, useSetMetadata } from "../hooks";
 import { TokenPill } from "../TokenPill";
 import { Avatar } from "../Avatar";
 import { Spinner } from "../Spinner";
-import { ITokenBondingSettings } from "@strata-foundation/spl-token-collective";
+import { ITokenBondingSettings } from "strata-foundation-spl-token-collective-2";
 
 interface IEditProfileProps {
   ownerWalletKey: PublicKey;

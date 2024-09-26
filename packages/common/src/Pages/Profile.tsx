@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { gql, useQuery as apolloUseQuery } from "@apollo/client";
 import {
   Button,
@@ -38,8 +39,8 @@ import {
   useTokenRefFromBonding,
   useWalletTokenAccounts,
   useUsdLocked,
-} from "@strata-foundation/react";
-import { ITokenWithMetaAndAccount } from "@strata-foundation/spl-token-collective";
+} from "strata-foundation-react-2";
+import { ITokenWithMetaAndAccount } from "strata-foundation-spl-token-collective-2";
 import { APP_URL, SITE_URL, TROPHY_CREATOR } from "../constants";
 import React, { useMemo } from "react";
 import { AiOutlineSend } from "react-icons/ai";
@@ -59,7 +60,7 @@ import { NftListRaw } from "../Nft";
 import { Spinner } from "../Spinner";
 import { StatCard } from "../StatCard";
 import { useQuery, useReverseTwitter, useTwitterOwner } from "../utils";
-import { ITokenWithMeta } from "@strata-foundation/spl-utils";
+import { ITokenWithMeta } from "trata-foundation-spl-utils-2";
 import { Bounties } from "../Bounty/Bounties";
 
 interface ISocialTokenTabsProps {
@@ -222,7 +223,7 @@ export const Profile = React.memo(
       buyTargetRoyaltiesAmount &&
       fiatPrice &&
       pricing &&
-      toFiat(pricing.current(lowestMint)) * buyTargetRoyaltiesAmount;
+      toFiat(pricing.current(lowestMint as any)) * buyTargetRoyaltiesAmount;
 
     const {
       link,

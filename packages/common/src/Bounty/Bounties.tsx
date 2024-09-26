@@ -9,8 +9,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
-import { useBounties } from "@strata-foundation/marketplace-ui/src";
-import { useErrorHandler, useQueryString } from "@strata-foundation/react";
+import { useBounties } from "strata-foundation-marketplace-ui-2";
+import { useErrorHandler, useQueryString } from "strata-foundation-react-2";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { RiSortAsc, RiSortDesc } from "react-icons/ri";

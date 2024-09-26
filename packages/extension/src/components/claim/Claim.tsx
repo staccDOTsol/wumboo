@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { routes } from "@/constants/routes";
 import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";

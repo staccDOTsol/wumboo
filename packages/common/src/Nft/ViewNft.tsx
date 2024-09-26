@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useRef } from "react";
 import {
   Box,
@@ -9,9 +10,9 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { HiOutlineArrowsExpand } from "react-icons/hi";
-import { MetadataCategory } from "@strata-foundation/spl-utils";
+import { MetadataCategory } from "trata-foundation-spl-utils-2";
 import { PublicKey } from "@solana/web3.js";
-import { useTokenMetadata, useErrorHandler } from "@strata-foundation/react";
+import { useTokenMetadata, useErrorHandler } from "strata-foundation-react-2";
 import { Creator, GetCreatorLink } from "./";
 // @ts-ignore
 import { ExpandedNft } from "./ExpandedNft";

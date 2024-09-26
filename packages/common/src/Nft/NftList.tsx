@@ -4,8 +4,8 @@ import {
   useErrorHandler,
   useMetaplexTokenMetadata,
   useWalletTokenAccounts,
-} from "@strata-foundation/react";
-import { ITokenWithMeta } from "@strata-foundation/spl-utils";
+} from "strata-foundation-react-2";
+import { ITokenWithMeta } from "trata-foundation-spl-utils-2";
 import React from "react";
 import { Spinner } from "../Spinner";
 import { NftCard } from "./NftCard";

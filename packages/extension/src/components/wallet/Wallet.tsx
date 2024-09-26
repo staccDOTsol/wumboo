@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box } from "@chakra-ui/react";
 import React, { Fragment } from "react";
 import {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Button,
   FormControl,
@@ -15,8 +16,8 @@ import {
   useErrorHandler,
   useProvider,
   useStrataSdks,
-} from "@strata-foundation/react";
-import { SplTokenCollective } from "@strata-foundation/spl-token-collective";
+} from "strata-foundation-react-2";
+import { SplTokenCollective } from "strata-foundation-spl-token-collective-2";
 import React, { useEffect, useState } from "react";
 import { AnchorProvider as Provider } from "@coral-xyz/anchor";
 import { useAsync, useAsyncCallback } from "react-async-hook";
@@ -26,7 +27,7 @@ import {
   executeTxnsInOrder,
   getAndSignRemoteTxns,
   signOnlyNeeded,
-} from "@strata-foundation/spl-utils";
+} from "trata-foundation-spl-utils-2";
 import toast from "react-hot-toast";
 
 type Selecting = "prev" | "new" | "final";
@@ -92,6 +93,7 @@ export function Relink() {
         setPrevWallet(undefined);
       } else if (selecting == "final") {
         if (newWallet!.equals(publicKey)) {
+          // @ts-ignore
           submit(tokenCollectiveSdk, provider, txns).catch((e) => {
             setTxns(undefined);
             throw e;

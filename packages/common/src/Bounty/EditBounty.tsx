@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
-import { EditBountyForm } from "@strata-foundation/marketplace-ui/src";
+import { EditBountyForm } from "strata-foundation-marketplace-ui-2";
 import React from "react";
 
 export const EditBounty = ({

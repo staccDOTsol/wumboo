@@ -6,77 +6,119 @@ module.exports = {
     {
       plugin: CracoEsbuildPlugin,
       options: {
-        includePaths: ["/external/dir/with/components"], // Optional. If you want to include components which are not in src folder
+        includePaths: [path.resolve(__dirname, '../../')],
         esbuildLoaderOptions: {
-          // Optional. Defaults to auto-detect loader.
-          loader: "tsx", // Set the value to 'tsx' if you use typescript
-          target: "ESNext", // or "ESNext"
+          loader: "tsx",
+          target: "esnext",
         },
         esbuildMinimizerOptions: {
-          // Optional. Defaults to:
-          target: "ESNext", // or "ESNext"
-          css: true, // if true, OptimizeCssAssetsWebpackPlugin will also be replaced by esbuild.
+          target: "esnext",
+          css: true,
         },
-        skipEsbuildJest: false, // Optional. Set to true if you want to use babel for jest tests,
+        skipEsbuildJest: false,
         esbuildJestOptions: {
           loaders: {
             ".ts": "ts",
             ".tsx": "tsx",
+            ".mjs": "ts",
           },
-        },
-        // Add the following configuration
-        esbuildConfig: {
-          target: "ESNext", // or "ESNext"
-          lib: ["DOM", "DOM.Iterable", "ESNext"],
         },
       },
     },
   ],
   webpack: {
-    configure: {
-      node: {
-        fs: "empty",
-      },
-      module: {
-        rules: [
-          {
-            test: /\.mjs$/,
-            include: /node_modules/,
-            type: "javascript/auto",
-          },
-        ],
-      },
-      resolve: {
-        alias: {
-          react: path.resolve("../../node_modules/react"),
-          "@solana/wallet-adapter-react": path.resolve(
-            "../../node_modules/@solana/wallet-adapter-react"
-          ),
-          "@toruslabs/solana-embed": path.resolve(
-            "../../node_modules/@toruslabs/solana-embed"
-          ),
-          // For local dev with linked packages:
-          ...(process.env.LINKED_DEV
-            ? {
-                "@chakra-ui/react": path.resolve(
-                  "../../node_modules/@chakra-ui/react"
-                ),
-                "@strata-foundation/react": path.resolve(
-                  "./node_modules/@strata-foundation/react"
-                ),
-                "@strata-foundation/spl-token-bonding": path.resolve(
-                  "./node_modules/@strata-foundation/spl-token-bonding"
-                ),
-                "@strata-foundation/spl-token-collective": path.resolve(
-                  "./node_modules/@strata-foundation/spl-token-collective"
-                ),
-                "@strata-foundation/spl-utils": path.resolve(
-                  "./node_modules/@strata-foundation/spl-utils"
-                ),
-              }
-            : {}),
+    configure: (webpackConfig) => {
+      // Existing configuration
+      webpackConfig.module.rules.push(
+        {
+          test: /\.mjs$/,        
+          exclude: [
+            /node_modules\/@emotion\/react/,
+            /node_modules\/@emotion\/styled/,
+            /node_modules\/@emotion\/use-insertion-effect-with-fallbacks/,
+          ],
+          include: /node_modules/,
+          type: "javascript/auto"
         },
-      },
+        {
+          test: /\.(js|jsx|ts|tsx)$/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+              plugins: [
+                '@babel/plugin-proposal-optional-chaining',
+                '@babel/plugin-proposal-nullish-coalescing-operator'
+              ]
+            }
+          },
+          exclude: /node_modules/,
+        }
+      );
+
+      // Modify the resolve configuration
+      webpackConfig.resolve = {
+        ...webpackConfig.resolve,
+        extensionAlias: {
+          '.js': ['.js', '.ts'],
+          '.mjs': ['.mjs', '.mts'],
+          '.cjs': ['.cjs', '.cts'],
+        },
+        fallback: {
+          "crypto": require.resolve("crypto-browserify"),
+          "stream": require.resolve("stream-browserify"),
+          "assert": require.resolve("assert"),
+          "http": require.resolve("stream-http"),
+          "https": require.resolve("https-browserify"),
+          "os": require.resolve("os-browserify"),
+          "url": require.resolve("url"),
+          "path": require.resolve("path-browserify"),
+          "zlib": require.resolve("browserify-zlib"),
+          "util": require.resolve("util"),
+          "buffer": require.resolve("buffer"),
+          "assert": require.resolve("assert/"),
+          "process": require.resolve("process/browser"),
+          "fs": false,
+        },
+        alias: {
+          ...webpackConfig.resolve.alias,
+          "@strata-foundation/react": path.resolve(
+            "./node_modules/strata-foundation-react-2"
+          ),
+          "@strata-foundation/marketplace-ui": path.resolve(
+            "./node_modules/strata-foundation-marketplace-ui-2"
+          ),
+          "@strata-foundation/spl-token-bonding": path.resolve(
+            "./node_modules/strata-foundation-spl-token-bonding-2"
+          ),
+          "@strata-foundation/spl-token-collective": path.resolve(
+            "./node_modules/strata-foundation-spl-token-collective-2"
+          ),
+          "@strata-foundation/spl-utils": path.resolve(
+            "./node_modules/trata-foundation-spl-utils-2"
+          ),
+          "strata-foundation-marketplace-ui-2": path.resolve(
+            "./node_modules/strata-foundation-marketplace-ui-2"
+          ),
+          "strata-foundation-react-2": path.resolve(
+            "./node_modules/strata-foundation-react-2"
+          ),
+          "strata-foundation-spl-token-bonding-2": path.resolve(
+            "./node_modules/strata-foundation-spl-token-bonding-2"
+          ),
+          "trata-foundation-spl-utils-2": path.resolve(
+            "./node_modules/trata-foundation-spl-utils-2"
+          ),
+        },
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      };
+
+      // Allow importing from outside src/ directory
+      webpackConfig.resolve.plugins = webpackConfig.resolve.plugins.filter(
+        (plugin) => plugin.constructor.name !== 'ModuleScopePlugin'
+      );
+
+      return webpackConfig;
     },
   },
 };

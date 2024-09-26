@@ -1,5 +1,5 @@
 import { usePublicKey } from "@strata-foundation/react";
-import { bountyPath } from "constants/routes";
+import { bountyPath } from "../../constants/routes";
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { EditBounty } from "wumbo-common";

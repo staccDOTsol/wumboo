@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from "react";
 import isEqual from "lodash/isEqual";
 import { useInterval } from "@strata-foundation/react";

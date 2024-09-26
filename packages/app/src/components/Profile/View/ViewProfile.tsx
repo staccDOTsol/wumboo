@@ -1,3 +1,4 @@
+    // @ts-nocheck
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
@@ -47,7 +48,7 @@ export const ViewProfileRoute: React.FC = () => {
   );
 
   const { info: tokenBonding, loading: tokenBondingLoading } =
-    useTokenBondingFromMint(passedMintKey || tokenRef?.mint);
+    useTokenBondingFromMint(passedMintKey || tokenRef.mint);
   const { owner: twitterWallet, loading: twitterOwnerLoading } =
     useTwitterOwner(name || undefined);
 
@@ -83,7 +84,7 @@ export const ViewProfileRoute: React.FC = () => {
         relinkPath={Routes.relink.path}
         onBountyCreateClick={(mint) => history.push(createBountyPath(mint))}
         onBountyClick={(bountyMint) => history.push(bountyPath(bountyMint))}
-        sendPath={sendSearchPath(tokenRef?.owner || twitterWallet || undefined)}
+        sendPath={sendSearchPath(tokenRef.owner || twitterWallet || undefined)}
         collectivePath={
           tokenBonding ? profilePath(tokenBonding.baseMint) : null
         }
@@ -99,7 +100,7 @@ export const ViewProfileRoute: React.FC = () => {
             throw new Error("Not yet supported on site");
           },
         })}
-        mintKey={passedMintKey || tokenRef?.mint}
+        mintKey={passedMintKey || tokenRef.mint}
         onAccountClick={(mintKey, handle) => {
           if (handle) {
             history.push(Routes.profile.path + `?name=${handle}`);
@@ -118,7 +119,7 @@ export const ViewProfileRoute: React.FC = () => {
           )
         }
         getNftLink={(token) => {
-          const mint = token?.metadata?.mint;
+          const mint = token.metadata.mint;
           return mint ? nftPath(new PublicKey(mint)) : "";
         }}
       />

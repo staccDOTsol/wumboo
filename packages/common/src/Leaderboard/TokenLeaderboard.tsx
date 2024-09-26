@@ -8,8 +8,8 @@ import {
   usePrimaryClaimedTokenRef,
   useTokenAccount,
   useTokenBonding,
-} from "@strata-foundation/react";
-import { amountAsNum } from "@strata-foundation/spl-token-bonding";
+} from "strata-foundation-react-2";
+import { amountAsNum } from "strata-foundation-spl-token-bonding-2";
 import React, { useMemo } from "react";
 import { useReverseTwitter } from "../utils";
 import { UserLeaderboardElement } from "./UserLeaderboardElement";

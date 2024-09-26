@@ -2,10 +2,10 @@ import { WebAuth, AuthOptions } from "auth0-js";
 import { APP_URL, SITE_URL } from "../constants";
 
 export const auth0Options: AuthOptions = {
-  domain: process.env.REACT_APP_AUTH0_DOMAIN || "wumbo.us.auth0.com",
+  domain: process.env.REACT_APP_AUTH0_DOMAIN || "dev-q0h2rv2c.us.auth0.com",
   maxAge: 1,
   clientID:
-    process.env.REACT_APP_AUTH0_CLIENT_ID || "GPsjYroOyNKWCScIk2woGZi4kBTGDDTW",
+    process.env.REACT_APP_AUTH0_CLIENT_ID || "B1O8V23KBvLaE6WldwJkpKSCLHcUsRQN",
 };
 
 export const auth0 = new WebAuth(auth0Options);
@@ -31,7 +31,7 @@ export function useClaimLink({
   extension?: boolean;
   step?: number;
 }): { redirectUri: string; claim: () => Window | null } {
-  const redirectUri = `${APP_URL}/claim?step=${step}&handle=${handle}`;
+  const redirectUri = `${APP_URL}/claim?step=${step}`;
   const claim = () => {
     const state = makeId(6);
 

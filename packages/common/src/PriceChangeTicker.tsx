@@ -7,12 +7,12 @@ import {
   useMint,
   useTokenAccount,
   useTokenBonding,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import {
   amountAsNum,
   fromCurve,
   toBN,
-} from "@strata-foundation/spl-token-bonding";
+} from "strata-foundation-spl-token-bonding-2";
 import React, { useMemo } from "react";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { useTokenBondingRecentTransactions } from "./contexts";

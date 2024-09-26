@@ -6,8 +6,8 @@ import {
   useTokenBonding,
   useTokenMetadata,
   useTokenRef,
-} from "@strata-foundation/react";
-import { ARWEAVE_UPLOAD_URL, FileOrString } from "@strata-foundation/spl-utils";
+} from "strata-foundation-react-2";
+import { ARWEAVE_UPLOAD_URL, FileOrString } from "trata-foundation-spl-utils-2";
 import { Creator, DataV2 } from "@metaplex-foundation/mpl-token-metadata";
 import { useState } from "react";
 import { useAsyncCallback } from "react-async-hook";

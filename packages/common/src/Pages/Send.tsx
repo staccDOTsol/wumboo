@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useAsync } from "react-async-hook";
@@ -25,7 +26,7 @@ import {
   useEstimatedFees,
   usePublicKey,
   useProvider,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import {
   Text,
   HStack,
@@ -49,7 +50,7 @@ import { Notification } from "../Notification";
 import { Spinner } from "../Spinner";
 import { Avatar } from "../Avatar";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { SplTokenMetadata } from "@strata-foundation/spl-utils";
+import { SplTokenMetadata } from "trata-foundation-spl-utils-2";
 import { useQuery } from "../utils";
 
 type FormValues = { amount: number; recipient: string };

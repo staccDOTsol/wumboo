@@ -10,7 +10,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
-import { Spinner, useMint, useTokenMetadata } from "@strata-foundation/react";
+import { Spinner, useMint, useTokenMetadata } from "strata-foundation-react-2";
 import { RiCheckboxCircleFill } from "react-icons/ri";
 import { RiTwitterFill } from "react-icons/ri";
 import React, { ReactNode } from "react";

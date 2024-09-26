@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { PublicKey } from "@solana/web3.js";
-import { ITokenBonding } from "@strata-foundation/spl-token-bonding";
+import { ITokenBonding } from "strata-foundation-spl-token-bonding-2";
 import {
   usePublicKey,
   useTokenBonding,
   useTokenMetadata,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import { Avatar, MetadataAvatar } from "../";
 
 interface IUseTokenBondingInfo extends ITokenBonding {

@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
-import { useErrorHandler, useTokenMetadata } from "@strata-foundation/react";
+import { useErrorHandler, useTokenMetadata } from "strata-foundation-react-2";
 import React from "react";
 import { Avatar, Spinner } from "..";
 import { truncatePubkey } from "../utils";

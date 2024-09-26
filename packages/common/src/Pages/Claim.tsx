@@ -7,7 +7,7 @@ import {
   useFtxPayLink,
   useProvider,
   useClaimedTokenRefKey,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import { useCreateOrClaimCoin } from "../utils/claim";
 import { TWITTER_REGISTRY_SIZE } from "../utils/twitter";
 import { Spinner } from "../Spinner";

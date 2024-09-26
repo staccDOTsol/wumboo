@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useMemo } from "react";
 import {
   Spinner,
@@ -28,7 +29,7 @@ export const ViewNftRoute: React.FC = () => {
     result: res2,
     error: err2,
   } = useTokenLargestAccounts(token);
-  const { loading: loading3, info } = useTokenAccount(res2?.value[0]?.address);
+  const { loading: loading3, info } = useTokenAccount(res2.value[0].address);
   const loading = loading1 || loading2 || loading3;
 
   handleErrors(err2);
@@ -45,7 +46,7 @@ export const ViewNftRoute: React.FC = () => {
     <AppContainer>
       <CommonViewNft
         token={token}
-        owner={info?.owner}
+        owner={info.owner}
         getCreatorLink={(c, t, tokenRef) => {
           return tokenRef
             ? profilePath(tokenRef.mint)

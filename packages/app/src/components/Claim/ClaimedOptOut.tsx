@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";

@@ -21,7 +21,7 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
-import { MarketplaceSdkProvider } from "@strata-foundation/marketplace-ui/src";
+import { MarketplaceSdkProvider } from "@strata-foundation/marketplace-ui";
 
 export const getToken = (endpoint: string) => async () => {
   if (endpoint.includes("genesysgo")) {
@@ -39,14 +39,14 @@ export const ContextProviders: React.FC = ({ children }) => {
   const onError = useCallback((error: Error) => {
     console.error(error);
     if (
-      error.message?.includes(
+      error.message.includes(
         "Attempt to debit an account but found no record of a prior credit."
       )
     ) {
       error = new Error("Not enough SOL to perform this action");
     }
 
-    const code = (error.message?.match("custom program error: (.*)") || [])[1];
+    const code = (error.message.match("custom program error: (.*)") || [])[1];
     if (code === "0x1") {
       error = new Error("Insufficient balance.");
     } else if (code === "0x136") {

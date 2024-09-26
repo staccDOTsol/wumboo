@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Flex } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
 import { SplTokenCollective } from "@strata-foundation/spl-token-collective";

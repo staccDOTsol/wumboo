@@ -11,7 +11,7 @@ import {
   useAccount,
   useAccountFetchCache,
   UseAccountState,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import { deserializeUnchecked } from "borsh";
 import { useAsync } from "react-async-hook";
 import { fetchConfig } from "../contexts";

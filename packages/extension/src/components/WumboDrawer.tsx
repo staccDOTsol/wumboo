@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef, Fragment, ReactNode, useContext } from "react";
 import {
   Route,

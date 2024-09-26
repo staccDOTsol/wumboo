@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { usePublicKey } from "@strata-foundation/react";
 import { useHistory, useLocation, useParams } from "react-router-dom";

@@ -1,11 +1,11 @@
 import { gql, useApolloClient } from "@apollo/client";
 import { PublicKey } from "@solana/web3.js";
-import { numberWithCommas } from "@strata-foundation/marketplace-ui/src";
+import { numberWithCommas } from "strata-foundation-marketplace-ui-2";
 import {
   useBondingPricing,
   usePriceInUsd,
   useTokenBonding,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 import React, { useMemo } from "react";
 import { UserLeaderboardElement } from "./UserLeaderboardElement";
 import { WumboUserLeaderboard } from "./WumboUserLeaderboard";

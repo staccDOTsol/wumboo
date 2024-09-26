@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
-import { BountyDetail } from "@strata-foundation/marketplace-ui/src";
-import { useErrorHandler, useTokenMetadata } from "@strata-foundation/react";
+import { BountyDetail } from "strata-foundation-marketplace-ui-2";
+import { useErrorHandler, useTokenMetadata } from "strata-foundation-react-2";
 import { ExpandedNft } from "../Nft/ExpandedNft";
 import React, { useState } from "react";
 import { HiOutlineArrowsExpand } from "react-icons/hi";

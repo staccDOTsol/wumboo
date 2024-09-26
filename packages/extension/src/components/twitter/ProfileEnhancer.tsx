@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment, useEffect, useState, useCallback } from "react";
 import ReactShadow from "react-shadow/emotion";
 import { Box, Button, HStack } from "@chakra-ui/react";

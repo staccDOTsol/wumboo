@@ -85,7 +85,7 @@ export const OptOutRoute: React.FC = () => {
               discord
             </Link>{" "}
             or{" "}
-            <Link href="https://twitter.com/TeamWumbo" color="indigo.500">
+            <Link href="https://x.com/TeamWumbo" color="indigo.500">
               twitter
             </Link>
             .
@@ -115,7 +115,7 @@ export const OptOutRoute: React.FC = () => {
               <ListIcon as={RiFocusFill} color="indigo.500" />
               Open a direct message with the&nbsp;
               <Link
-                href="https://twitter.com/WumboTokenBot?s=20"
+                href="https://x.com/WumboTokenBot?s=20"
                 isExternal
                 color="indigo.500"
               >

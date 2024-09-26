@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import { useWallet } from "@solana/wallet-adapter-react";

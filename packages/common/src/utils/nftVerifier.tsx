@@ -4,7 +4,7 @@ import {
   NameRegistryState,
 } from "@bonfida/spl-name-service";
 import { PublicKey } from "@solana/web3.js";
-import { AccountFetchCache } from "@strata-foundation/spl-utils";
+import { AccountFetchCache } from "trata-foundation-spl-utils-2";
 import { Metadata } from "@metaplex-foundation/mpl-token-metadata";
 import { deserializeUnchecked } from "borsh";
 

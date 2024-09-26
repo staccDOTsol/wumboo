@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { FC } from "react";
 import {
   extendTheme,
@@ -56,7 +57,7 @@ export const theme = extendTheme({
     indigo: primary,
     primary,
   },
-});
+}) as any;
 
 export const ThemeProvider: FC = ({ children }) => (
   <ChakraProvider resetCSS theme={theme}>

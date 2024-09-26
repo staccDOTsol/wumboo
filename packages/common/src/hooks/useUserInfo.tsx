@@ -7,9 +7,9 @@ import {
   useBondingPricing,
   useTokenRefForName,
   useMint,
-} from "@strata-foundation/react";
-import { ITokenBonding, ICurve } from "@strata-foundation/spl-token-bonding";
-import { ITokenRef } from "@strata-foundation/spl-token-collective";
+} from "strata-foundation-react-2";
+import { ITokenBonding, ICurve } from "strata-foundation-spl-token-bonding-2";
+import { ITokenRef } from "strata-foundation-spl-token-collective-2";
 import { useTwitterTld } from "./useTwitterTld";
 
 export interface UserInfo {
@@ -48,7 +48,7 @@ export const useUserInfo = (name: string): UserInfoState => {
   const { pricing: bondingCurve, loading: loading4 } = useBondingPricing(
     creator?.tokenBonding
   );
-  const current = bondingCurve?.current(tokenBonding?.baseMint) || 0;
+  const current = bondingCurve?.current(tokenBonding?.baseMint as any) || 0;
   const loading = useMemo(() => {
     return (
       loading1 ||

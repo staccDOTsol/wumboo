@@ -4,7 +4,7 @@ import {
   useBondingPricing,
   useUsdLocked,
   useSolPrice,
-} from "@strata-foundation/react";
+} from "strata-foundation-react-2";
 
 export type TokenTier = "Platinum" | "Gold" | "Silver";
 

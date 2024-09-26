@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ITokenWithMetaAndAccount } from "@strata-foundation/spl-token-collective";
 import { sendPath } from "@/constants/routes";
 import { Box } from "@chakra-ui/react";

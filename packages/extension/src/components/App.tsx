@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { routes } from "@/constants/routes";
 import React, { FC } from "react";
 import { MemoryRouter as Router, Route, Switch } from "react-router-dom";

@@ -26,16 +26,12 @@ const ScrollToTop = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
       <ModalProvider>
-        <BrowserRouter>
           <ScrollToTop />
           <Switch>
             <Route path={Routes.root.path} component={App} />
           </Switch>
-        </BrowserRouter>
       </ModalProvider>
-    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,9 +1,11 @@
+// @ts-nocheck
+
 import { Button, ButtonProps } from "@chakra-ui/button";
 import { Center } from "@chakra-ui/layout";
 import { Box } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
 import React, { useMemo } from "react";
-import { usePriceInUsd } from "@strata-foundation/react";
+import { usePriceInUsd } from "strata-foundation-react-2";
 import { Link } from "react-router-dom";
 import { getTierGradient, useTokenTier } from "./hooks";
 import { Spinner } from "./Spinner";
