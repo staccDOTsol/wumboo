@@ -1,0 +1,3 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var createIrysUploader=require("./createIrysUploader.cjs"),errors=require("./errors.cjs"),plugin=require("./plugin.cjs");exports.createIrysUploader=createIrysUploader.createIrysUploader,exports.isIrysUploader=createIrysUploader.isIrysUploader,exports.AssetUploadFailedError=errors.AssetUploadFailedError,exports.FailedToConnectToIrysAddressError=errors.FailedToConnectToIrysAddressError,exports.FailedToInitializeIrysError=errors.FailedToInitializeIrysError,exports.IrysError=errors.IrysError,exports.IrysWithdrawError=errors.IrysWithdrawError,exports.irysUploader=plugin.irysUploader;
+
+//# sourceMappingURL=index.065e1a4381480bd0e10f.cjs.map
