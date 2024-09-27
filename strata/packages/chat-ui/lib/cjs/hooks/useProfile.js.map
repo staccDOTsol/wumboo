@@ -1,0 +1,1 @@
+{"version":3,"file":"useProfile.js","sourceRoot":"","sources":["../../../src/hooks/useProfile.tsx"],"names":[],"mappings":";;;AAEA,oDAAuE;AACvE,iDAAiD;AAE1C,MAAM,UAAU,GAAG,CACxB,OAAqC,EACV,EAAE;IAC7B,MAAM,EAAE,OAAO,EAAE,GAAG,IAAA,oBAAU,GAAE,CAAC;IAEjC,OAAO,IAAA,kBAAU,EAAC,OAAO,EAAE,OAAO,aAAP,OAAO,uBAAP,OAAO,CAAE,cAAc,CAAC,CAAC;AACtD,CAAC,CAAC;AANW,QAAA,UAAU,cAMrB"}

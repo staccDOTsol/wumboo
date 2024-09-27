@@ -1,0 +1,1 @@
+{"version":3,"file":"useCaseInsensitiveMarker.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useCaseInsensitiveMarker.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAC5C,OAAO,EAAE,sBAAsB,EAAE,MAAM,yBAAyB,CAAC;AACjE,OAAO,EAAc,eAAe,EAAE,MAAM,0BAA0B,CAAC;AAGvE,eAAO,MAAM,wBAAwB,0BACZ,SAAS,GAAG,SAAS,GAAG,IAAI,KAClD,gBAAgB,sBAAsB,CAIxC,CAAC"}

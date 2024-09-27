@@ -1,0 +1,1 @@
+{"version":3,"file":"useWalletFromUsernameIdentifier.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useWalletFromUsernameIdentifier.ts"],"names":[],"mappings":"AACA,OAAO,EAAc,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAQxD,wBAAgB,+BAA+B,CAAC,UAAU,CAAC,EAAE,MAAM,GAAG;IACpE,OAAO,EAAE,OAAO,CAAC;IACjB,MAAM,EAAE,SAAS,GAAG,SAAS,CAAC;IAC9B,KAAK,CAAC,EAAE,KAAK,CAAC;CACf,CA6DA"}

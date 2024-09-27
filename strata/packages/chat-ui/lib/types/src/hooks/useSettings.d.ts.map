@@ -1,0 +1,1 @@
+{"version":3,"file":"useSettings.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useSettings.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAC5C,OAAO,EAAE,SAAS,EAAE,MAAM,yBAAyB,CAAC;AACpD,OAAO,EAAc,eAAe,EAAE,MAAM,0BAA0B,CAAC;AAGvE,eAAO,MAAM,WAAW,aACZ,SAAS,GAAG,SAAS,GAAG,IAAI,KACrC,gBAAgB,SAAS,CAI3B,CAAC"}

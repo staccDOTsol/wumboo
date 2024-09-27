@@ -1,0 +1,10 @@
+import React from "react";
+import { Badge, Circle, HStack, Text } from "@chakra-ui/react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+export const ActiveUsers = ({ num, fontSize = "15px", }) => (React.createElement(Badge, { color: "white", position: "absolute", top: "16px", left: "16px", rounded: "full", p: "10px", background: "gray.600", fontSize: fontSize, lineHeight: fontSize, fontWeight: "bold" },
+    React.createElement(HStack, { spacing: 1 },
+        React.createElement(Circle, { background: "#67FF92", size: "8px" }),
+        React.createElement(Text, null,
+            num,
+            " Active"))));
+//# sourceMappingURL=ActiveUsers.js.map

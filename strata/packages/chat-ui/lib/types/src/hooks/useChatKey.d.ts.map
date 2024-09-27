@@ -1,0 +1,1 @@
+{"version":3,"file":"useChatKey.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useChatKey.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAI5C,wBAAgB,UAAU,CAAC,yBAAyB,CAAC,EAAE,SAAS,GAAG;IACjE,OAAO,EAAE,OAAO,CAAC;IACjB,GAAG,EAAE,SAAS,GAAG,SAAS,CAAC;CAC5B,CAaA"}

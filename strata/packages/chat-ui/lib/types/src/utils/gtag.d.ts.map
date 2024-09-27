@@ -1,0 +1,1 @@
+{"version":3,"file":"gtag.d.ts","sourceRoot":"","sources":["../../../../src/utils/gtag.ts"],"names":[],"mappings":"AAGA,eAAO,MAAM,QAAQ,QAAS,GAAG,KAAG,IAOnC,CAAC;AAEF,aAAK,SAAS,GAAG;IACf,MAAM,EAAE,MAAM,CAAC;IACf,QAAQ,EAAE,MAAM,CAAC;IACjB,KAAK,EAAE,MAAM,CAAC;IACd,KAAK,EAAE,MAAM,CAAC;CACf,CAAC;AAGF,eAAO,MAAM,KAAK,uCAAwC,SAAS,KAAG,IASrE,CAAC"}

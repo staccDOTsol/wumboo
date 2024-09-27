@@ -1,0 +1,1 @@
+{"version":3,"file":"ChatSidebarPreview.d.ts","sourceRoot":"","sources":["../../../../../src/components/rooms/ChatSidebarPreview.tsx"],"names":[],"mappings":"AAiBA,oBAAY,aAAa,GAAG;IAC1B,UAAU,CAAC,EAAE,MAAM,CAAC;IACpB,OAAO,CAAC,EAAE,MAAM,IAAI,CAAC;IACrB,OAAO,CAAC,EAAE,MAAM,IAAI,CAAC;CACtB,CAAC;AAEF,wBAAgB,kBAAkB,CAAC,EAAE,UAAU,EAAE,OAAO,EAAE,OAAO,EAAE,EAAE,aAAa,eAkEjF"}

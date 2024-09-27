@@ -1,0 +1,1 @@
+{"version":3,"file":"useChatPermissions.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useChatPermissions.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAC5C,OAAO,EAAE,gBAAgB,EAAE,MAAM,yBAAyB,CAAC;AAC3D,OAAO,EAAc,eAAe,EAAE,MAAM,0BAA0B,CAAC;AAGvE,eAAO,MAAM,kBAAkB,oBACZ,SAAS,GAAG,SAAS,GAAG,IAAI,KAC5C,gBAAgB,gBAAgB,CAIlC,CAAC"}

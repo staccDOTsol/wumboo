@@ -1,0 +1,6 @@
+70 error Error: Command failed with exit code 128: git tag v1.2.4 -m v1.2.4
+70 error fatal: tag 'v1.2.4' already exists
+70 error     at makeError (/Users/nprince/.config/yarn/global/node_modules/execa/lib/error.js:60:11)
+70 error     at handlePromise (/Users/nprince/.config/yarn/global/node_modules/execa/index.js:118:26)
+70 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+70 error     at async Promise.all (index 0)

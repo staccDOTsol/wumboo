@@ -1,0 +1,57 @@
+{
+  "name": "@strata-foundation/strata",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "description": "Wum.bo Token Staking tests",
+  "license": "MIT",
+  "author": "Wum.bo Inc.",
+  "devDependencies": {
+    "@parcel/packager-ts": "^2.0.0",
+    "@parcel/transformer-typescript-types": "^2.0.0",
+    "@project-serum/anchor": "^0.22.0",
+    "@types/chai": "^4.2.21",
+    "@types/chai-as-promised": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "camelcase": "^6.2.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "concurrently": "^6.2.1",
+    "mocha": "^8.1.0",
+    "prettier": "2.3.1",
+    "ts-mocha": "^8.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "versionup": "lerna version --conventional-commits --no-git-tag-version",
+    "versionup:patch": "lerna version patch --conventional-commits --no-git-tag-version",
+    "versionup:minor": "lerna version minor --conventional-commits --no-git-tag-version",
+    "versionup:major": "lerna version major --conventional-commits --no-git-tag-version",
+    "postversionup": "npm run commit-version",
+    "postversionup:patch": "npm run commit-version",
+    "postversionup:minor": "npm run commit-version",
+    "postversionup:major": "npm run commit-version",
+    "commit-version": "git add . && git commit -m \"chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
+    "release": "lerna publish from-package --no-verify-access",
+    "release:canary": "lerna publish --canary --preid next --dist-tag next --force-publish='*' --no-push --no-git-tag-version --no-verify-access --yes",
+    "watch": "npx lerna run --parallel watch --ignore @strata-foundation/cli",
+    "build": "npx lerna run build",
+    "build-programs": "anchor build && npx lerna run build --scope @strata-foundation/spl-utils --scope @strata-foundation/spl-token-bonding --scope @strata-foundation/spl-token-collective",
+    "bootstrap": "lerna run bootstrap --scope @strata-foundation/cli",
+    "test": "ts-mocha -p ./tsconfig.json -t 1000000 \"tests/**/*.ts\"",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@bonfida/spl-name-service": "^0.1.22",
+    "@chakra-ui/react": "2.1.2",
+    "@solana/buffer-layout": "^3.0.0",
+    "@solana/spl-token": "^0.1.8",
+    "@solana/web3.js": "^1.76.0",
+    "husky": "^7.0.4",
+    "lerna": "^4.0.0",
+    "quicktype-core": "^6.0.70"
+  }
+}

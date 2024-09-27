@@ -1,0 +1,1 @@
+{"version":3,"file":"useSettings.js","sourceRoot":"","sources":["../../../src/hooks/useSettings.tsx"],"names":[],"mappings":";;;AAEA,oDAAuE;AACvE,iDAAiD;AAE1C,MAAM,WAAW,GAAG,CACzB,QAAsC,EACV,EAAE;IAC9B,MAAM,EAAE,OAAO,EAAE,GAAG,IAAA,oBAAU,GAAE,CAAC;IAEjC,OAAO,IAAA,kBAAU,EAAC,QAAQ,EAAE,OAAO,aAAP,OAAO,uBAAP,OAAO,CAAE,eAAe,CAAC,CAAC;AACxD,CAAC,CAAC;AANW,QAAA,WAAW,eAMtB"}

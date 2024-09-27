@@ -1,0 +1,1 @@
+{"version":3,"file":"useWalletFromChatIdentifier.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useWalletFromChatIdentifier.ts"],"names":[],"mappings":"AAGA,OAAO,EAAc,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAMxD,eAAO,MAAM,2BAA2B,gBACzB,MAAM;aAEV,OAAO;YACR,SAAS,GAAG,SAAS;YACrB,KAAK;CAgEd,CAAC"}

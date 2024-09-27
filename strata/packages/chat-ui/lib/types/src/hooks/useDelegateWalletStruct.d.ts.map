@@ -1,0 +1,1 @@
+{"version":3,"file":"useDelegateWalletStruct.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useDelegateWalletStruct.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAC5C,OAAO,EAAE,eAAe,EAAE,MAAM,yBAAyB,CAAC;AAC1D,OAAO,EAAc,eAAe,EAAE,MAAM,0BAA0B,CAAC;AAGvE,eAAO,MAAM,uBAAuB,QAC7B,SAAS,GAAG,SAAS,GAAG,IAAI,KAChC,gBAAgB,eAAe,CAIjC,CAAC"}

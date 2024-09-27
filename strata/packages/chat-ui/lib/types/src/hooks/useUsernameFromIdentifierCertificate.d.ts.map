@@ -1,0 +1,1 @@
+{"version":3,"file":"useUsernameFromIdentifierCertificate.d.ts","sourceRoot":"","sources":["../../../../src/hooks/useUsernameFromIdentifierCertificate.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,iBAAiB,CAAC;AAI5C,wBAAgB,oCAAoC,CAAC,yBAAyB,EAAE,SAAS,GAAG,SAAS,EAAE,KAAK,EAAE,SAAS,GAAG,SAAS,GAAG;IAAE,OAAO,EAAE,OAAO,CAAC;IAAC,QAAQ,CAAC,EAAE,MAAM,CAAA;CAAE,CAqB5K"}
