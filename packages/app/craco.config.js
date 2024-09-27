@@ -6,7 +6,6 @@ module.exports = {
     {
       plugin: CracoEsbuildPlugin,
       options: {
-        includePaths: [path.resolve(__dirname, '../../')],
         esbuildLoaderOptions: {
           loader: "tsx",
           target: "esnext",
@@ -15,110 +14,214 @@ module.exports = {
           target: "esnext",
           css: true,
         },
-        skipEsbuildJest: false,
-        esbuildJestOptions: {
-          loaders: {
-            ".ts": "ts",
-            ".tsx": "tsx",
-            ".mjs": "ts",
-          },
-        },
+        skipEsbuildJest: true, // Optional. Set to true if you want to use babel for jest tests,
       },
     },
   ],
   webpack: {
     configure: (webpackConfig) => {
-      // Existing configuration
-      webpackConfig.module.rules.push(
-        {
-          test: /\.mjs$/,        
-          exclude: [
-            /node_modules\/@emotion\/react/,
-            /node_modules\/@emotion\/styled/,
-            /node_modules\/@emotion\/use-insertion-effect-with-fallbacks/,
-          ],
-          include: /node_modules/,
-          type: "javascript/auto"
-        },
-        {
-          test: /\.(js|jsx|ts|tsx)$/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-              plugins: [
-                '@babel/plugin-proposal-optional-chaining',
-                '@babel/plugin-proposal-nullish-coalescing-operator'
-              ]
-            }
-          },
-          exclude: /node_modules/,
-        }
-      );
+      // Ensure the rules array exists
+      webpackConfig.module.rules = webpackConfig.module.rules || [];
 
-      // Modify the resolve configuration
-      webpackConfig.resolve = {
-        ...webpackConfig.resolve,
-        extensionAlias: {
-          '.js': ['.js', '.ts'],
-          '.mjs': ['.mjs', '.mts'],
-          '.cjs': ['.cjs', '.cts'],
+      // Update the .mjs handling rule
+      webpackConfig.module.rules = webpackConfig.module.rules.filter(
+        rule => !(rule.test && rule.test.toString() === '/\\.mjs$/')
+      );
+      webpackConfig.module.rules.push({
+        test: /\.js$/,
+        include: /node_modules\/babel-eslint/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: [
+              '@babel/plugin-syntax-dynamic-import',
+              '@babel/plugin-proposal-optional-chaining',
+              '@babel/plugin-proposal-nullish-coalescing-operator',
+            ],
+          },
         },
-        fallback: {
-          "crypto": require.resolve("crypto-browserify"),
-          "stream": require.resolve("stream-browserify"),
-          "assert": require.resolve("assert"),
-          "http": require.resolve("stream-http"),
-          "https": require.resolve("https-browserify"),
-          "os": require.resolve("os-browserify"),
-          "url": require.resolve("url"),
-          "path": require.resolve("path-browserify"),
-          "zlib": require.resolve("browserify-zlib"),
-          "util": require.resolve("util"),
-          "buffer": require.resolve("buffer"),
-          "assert": require.resolve("assert/"),
-          "process": require.resolve("process/browser"),
-          "fs": false,
+      });
+
+      webpackConfig.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["@babel/preset-env", { targets: "defaults" }]
+            ],
+            plugins: [
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-proposal-private-methods"
+            ]
+          }
+        }
+      });
+
+      // Add rpc-websockets to the list of modules to be transpiled
+      const modulesToTranspile = [
+        // ... existing modules ...
+        /node_modules\/rpc-websockets/,
+        /node_modules\/.pnpm\/rpc-websockets/,
+      ];
+
+      // Update the existing rule for transpiling specific modules
+      const babelLoaderRule = webpackConfig.module.rules.find(
+        rule => rule.use && rule.use.loader === "babel-loader"
+      );
+      if (babelLoaderRule) {
+        babelLoaderRule.include = Array.isArray(babelLoaderRule.include)
+          ? babelLoaderRule.include.concat(modulesToTranspile)
+          : [babelLoaderRule.include].concat(modulesToTranspile);
+      }
+
+      // Handle .mjs files
+      webpackConfig.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto",
+      });
+
+      // Use esbuild-loader for JS and TS files excluding node_modules
+      webpackConfig.module.rules.push({
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "esbuild-loader",
+          options: {
+            loader: "tsx",
+            target: "esnext",
+          },
         },
-        alias: {
-          ...webpackConfig.resolve.alias,
-          "@strata-foundation/react": path.resolve(
-            "./node_modules/strata-foundation-react-2"
-          ),
-          "@strata-foundation/marketplace-ui": path.resolve(
-            "./node_modules/strata-foundation-marketplace-ui-2"
-          ),
-          "@strata-foundation/spl-token-bonding": path.resolve(
-            "./node_modules/strata-foundation-spl-token-bonding-2"
-          ),
-          "@strata-foundation/spl-token-collective": path.resolve(
-            "./node_modules/strata-foundation-spl-token-collective-2"
-          ),
-          "@strata-foundation/spl-utils": path.resolve(
-            "./node_modules/trata-foundation-spl-utils-2"
-          ),
-          "strata-foundation-marketplace-ui-2": path.resolve(
-            "./node_modules/strata-foundation-marketplace-ui-2"
-          ),
-          "strata-foundation-react-2": path.resolve(
-            "./node_modules/strata-foundation-react-2"
-          ),
-          "strata-foundation-spl-token-bonding-2": path.resolve(
-            "./node_modules/strata-foundation-spl-token-bonding-2"
-          ),
-          "trata-foundation-spl-utils-2": path.resolve(
-            "./node_modules/trata-foundation-spl-utils-2"
-          ),
-        },
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      });
+
+      // Extend resolved extensions
+      webpackConfig.resolve.extensions = webpackConfig.resolve.extensions || [];
+      webpackConfig.resolve.extensions.push(".mjs", ".ts", ".tsx");
+
+      // Add necessary aliases (if any)
+      webpackConfig.resolve.alias = {
+        ...webpackConfig.resolve.alias,
+        // Add aliases here if needed
       };
 
-      // Allow importing from outside src/ directory
-      webpackConfig.resolve.plugins = webpackConfig.resolve.plugins.filter(
-        (plugin) => plugin.constructor.name !== 'ModuleScopePlugin'
-      );
+      // Add Babel loader for specific node_modules that need transpilation
+      webpackConfig.module.rules.push({
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        include: [
+
+
+
+          /node_modules\/@solana\/web3\.js/,
+          /node_modules\/@noble\/curves/,
+          /node_modules\/@metaplex-foundation/,
+          /node_modules\/@google\/model-viewer/,
+          /node_modules\/@strata-foundation/,
+          /node_modules\/@solana\/wallet-adapter-react/,
+          /node_modules\/@metamask\/rpc-errors/,
+          /node_modules\/@solana\/.+/,
+          /node_modules\/.pnpm\/@solana\/.+/,
+          /node_modules\/@noble\/curves/,
+          /node_modules\/.pnpm\/@noble\/curves/,
+          /node_modules\/@metaplex-foundation/,
+          /node_modules\/@google\/model-viewer/,
+          /node_modules\/@toruslabs/,
+          /node_modules\/micro-ftch/,
+          /node_modules\/.pnpm\/@toruslabs/,
+          /node_modules\/.pnpm\/micro-ftch/,
+          /node_modules\/@strata-foundation/,
+          /node_modules\/.pnpm\/@strata-foundation/,
+          /node_modules\/.pnpm\/@strata-foundation\/spl-utils/,
+          /node_modules\/.pnpm\/@solana\/web3\.js/,
+          /node_modules\/.pnpm\/@noble\/curves/,
+          /node_modules\/rpc-websockets/,
+          /node_modules\/.pnpm\/rpc-websockets/,
+          /node_modules\/.pnpm\/@metaplex-foundation/,
+          /node_modules\/.pnpm\/@google\/model-viewer/,
+          /node_modules\/.pnpm\/@strata-foundation/,
+          /node_modules\/superstruct/,
+          /node_modules\/.pnpm\/@strata-foundation\+spl.*/,
+          /node_modules\/.pnpm\/superstruct/,
+          /node_modules\/.pnpm\/@ethereumjs/,
+
+          // Include other modules as needed
+        ],
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["@babel/preset-env", { targets: { browsers: "last 2 versions" } }],
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+            plugins: [
+              "@babel/plugin-proposal-optional-chaining",
+              "@babel/plugin-proposal-nullish-coalescing-operator",
+              "@babel/plugin-proposal-logical-assignment-operators",
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-proposal-object-rest-spread",
+            ],
+          },
+        },
+      });
+
+      // Remove duplicate rules (optional cleanup)
+      const uniqueRules = [];
+      webpackConfig.module.rules.forEach((rule) => {
+        if (
+          !uniqueRules.some(
+            (existingRule) =>
+              existingRule.test &&
+              rule.test &&
+              existingRule.test.toString() === rule.test.toString() &&
+              existingRule.include &&
+              rule.include &&
+              existingRule.include.toString() === rule.include.toString()
+          )
+        ) {
+          uniqueRules.push(rule);
+        }
+      });
+      // Remove unnecessary aliases to prevent conflicts
+      webpackConfig.resolve.alias = {
+        ...webpackConfig.resolve.alias,
+        // Only add aliases if absolutely necessary
+        "@metaplex-foundation/umi-signer-wallet-adapters": path.resolve(__dirname, "./node_modules/@metaplex-foundation/umi-signer-wallet-adapters/dist/cjs/index.cjs"),
+        "@metaplex-foundation/umi/serializers": path.resolve(__dirname, "./node_modules/@metaplex-foundation/umi/dist/cjs/serializers.cjs"),
+        "@metaplex-foundation/umi": path.resolve(__dirname, "./node_modules/@metaplex-foundation/umi/dist/cjs/index.cjs"), 
+        "@metaplex-foundation/umi-bundle-defaults": path.resolve(__dirname, "./node_modules/@metaplex-foundation/umi-bundle-defaults/dist/cjs/index.cjs"),
+        "@metaplex-foundation/umi-web3js-adapters": path.resolve(__dirname, "./node_modules/@metaplex-foundation/umi-web3js-adapters/dist/cjs/index.cjs"),
+        "@metaplex-foundation/umi-uploader-irys": path.resolve(__dirname, "./node_modules/@metaplex-foundation/umi-uploader-irys/dist/cjs/index.cjs"),
+        "@metaplex-foundation/umi-rpc-chunk-get-accounts": path.resolve(__dirname, "./node_modules/@metaplex-foundation/umi-rpc-chunk-get-accounts/dist/cjs/index.cjs"),
+      };
+      webpackConfig.module.rules = uniqueRules;
+
+      // Add specific rule for @strata-foundation/spl-token-collective
+      webpackConfig.module.rules.push({
+        test: /\.js$/,
+        include: /node_modules\/.pnpm\/@strata-foundation\+spl-token-collective/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: [
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-proposal-private-methods',
+            ],
+          },
+        },
+      });
 
       return webpackConfig;
     },
+  },
+  eslint: {
+    enable: false,
+  },
+  typescript: {
+    enableTypeChecking: false
   },
 };

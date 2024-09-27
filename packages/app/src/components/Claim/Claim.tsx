@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "wumbo-common";
 import { Alert, AlertIcon, Flex } from "@chakra-ui/react";
 import { claimPath } from "../../constants/routes";
@@ -9,7 +9,7 @@ import { Claim3 } from "./Claim3";
 import { Claim4 } from "./Claim4";
 
 export const ClaimRoute = React.memo(() => {
-  const history = useHistory();
+  const history = useNavigate();
   const query = useQuery();
   const step = query.get("step") || "1";
   const handle = query.get("handle") || undefined;
@@ -17,13 +17,13 @@ export const ClaimRoute = React.memo(() => {
 
   const incrementStep = useCallback(() => {
     if (handle) {
-      history.push(claimPath({ step: `${+step + 1}`, handle, code }));
+      history(claimPath({ step: `${+step + 1}`, handle, code }));
     }
   }, [step, handle, code, history]);
 
   const decrementStep = useCallback(() => {
     if (handle) {
-      history.push(claimPath({ step: `${+step - 1}`, handle, code }));
+      history(claimPath({ step: `${+step - 1}`, handle, code }));
     }
   }, [step, handle, code, history]);
 

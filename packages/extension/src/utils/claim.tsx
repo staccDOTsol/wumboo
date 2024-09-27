@@ -64,7 +64,7 @@ export function useClaimFlow(name?: string | null): IClaimFlowOutput {
     } else {
       name && (await create({ twitterHandle: name }));
     }
-    history.push(routes.editProfile.path);
+    history(routes.editProfile.path);
   };
 
   const link = async () => {
@@ -79,7 +79,7 @@ export function useClaimFlow(name?: string | null): IClaimFlowOutput {
         twitterHandle: name,
       }
     );
-    history.push(routes.profile.path);
+    history(routes.profile.path);
   };
 
   const { loading, execute, error } = useAsyncCallback(smartClaim);

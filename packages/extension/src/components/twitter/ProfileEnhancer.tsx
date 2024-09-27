@@ -15,7 +15,7 @@ import { Spinner, useBufferFromUrl, getBufferFromUrl } from "wumbo-common";
 // @ts-ignore
 import compareImages from "resemblejs/compareImages";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { ITokenWithMetaAndAccount } from "@strata-foundation/spl-token-collective";
+import { ITokenWithMetaAndAccount } from "strata-foundation-spl-token-collective-2";
 import {
   useErrorHandler,
   useUserTokensWithMeta,
@@ -166,7 +166,7 @@ export const ProfileEnhancer = () => {
                       size="md"
                       borderWidth="2px"
                       onClick={() => {
-                        history.push(tagNftPath(pfpMatch.account!.mint));
+                        history(tagNftPath(pfpMatch.account!.mint));
                         toggleDrawer({
                           isOpen: true,
                           creator: { name: profile.name, img: profile.avatar },

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useMemo } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { NATIVE_MINT } from "@solana/spl-token";
 import {
   useBondingPricing,
@@ -37,7 +37,7 @@ export interface IClaim1Props {
 
 export const Claim1 = React.memo<IClaim1Props>(
   ({ handle, incrementStep, decrementStep }) => {
-    const history = useHistory();
+    const history = useNavigate();
     const tld = useTwitterTld();
 
     const { info: tokenRef, loading: tokenRefLoading } = useTokenRefForName(
@@ -190,7 +190,7 @@ export const Claim1 = React.memo<IClaim1Props>(
             <Button
               colorScheme="indigo"
               variant="link"
-              onClick={() => history.push("/")}
+              onClick={() => history("/")}
               isDisabled={isLoading || !isClaimable}
             >
               Cancel
@@ -229,7 +229,7 @@ export const Claim1 = React.memo<IClaim1Props>(
                   colorScheme="indigo"
                   isDisabled={isLoading}
                   onClick={() =>
-                    history.push(
+                    history(
                       optOutPath({
                         handle,
                         fiatLocked: Number(fiatLocked) || 0,

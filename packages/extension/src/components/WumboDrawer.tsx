@@ -35,7 +35,7 @@ import {
 } from "wumbo-common";
 import { useHistoryList } from "@/utils/history";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { SplTokenCollective } from "@strata-foundation/spl-token-collective";
+import { SplTokenCollective } from "strata-foundation-spl-token-collective-2";
 import Logo from "../../public/assets/img/logo.svg";
 import { WalletAutoConnect } from "./wallet/WalletAutoConnect";
 import { useTwWrappedSolMint } from "@strata-foundation/react";

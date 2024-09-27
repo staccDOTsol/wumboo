@@ -27,7 +27,7 @@ import {
   executeTxnsInOrder,
   getAndSignRemoteTxns,
   signOnlyNeeded,
-} from "trata-foundation-spl-utils-2";
+} from "@strata-foundation/spl-utils";
 import toast from "react-hot-toast";
 
 type Selecting = "prev" | "new" | "final";

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from "react";
-import { Redirect, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { routes } from "../../constants/routes";
 
@@ -12,7 +12,7 @@ export default React.memo(() => {
     `?redirect=${location.pathname}${location.search}`;
 
   if (!connected) {
-    return <Redirect to={redirectUri} />;
+    return <Navigate to={redirectUri} />;
   }
 
   return null;

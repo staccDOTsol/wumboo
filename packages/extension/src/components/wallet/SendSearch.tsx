@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { ITokenWithMetaAndAccount } from "@strata-foundation/spl-token-collective";
+import { ITokenWithMetaAndAccount } from "strata-foundation-spl-token-collective-2";
 import { sendPath } from "@/constants/routes";
 import { Box } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
@@ -21,7 +21,7 @@ export const SendSearch = () => {
         <Box padding={4}>
           <CommonSendSearch
             onSelect={(t: ITokenWithMetaAndAccount) => {
-              history.push(
+              history(
                 sendPath(
                   t.account!.mint,
                   recipient ? new PublicKey(recipient) : undefined

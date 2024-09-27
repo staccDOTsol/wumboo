@@ -1,13 +1,13 @@
 // @ts-nocheck
 import React from "react";
 import { usePublicKey } from "@strata-foundation/react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { Swap } from "wumbo-common";
 import { Routes, swapPath } from "../../constants/routes";
 import { AppContainer } from "../AppContainer";
 
 export const SwapRoute: React.FC = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const location = useLocation();
   const query = useParams<{
     tokenBondingKey: string;
@@ -31,7 +31,7 @@ export const SwapRoute: React.FC = () => {
         baseMint={baseMint}
         targetMint={targetMint}
         onTradingMintsChange={({ base, target }) =>
-          history.push(swapPath(tokenBondingKey!, base, target))
+          history(swapPath(tokenBondingKey!, base, target))
         }
       />
     </AppContainer>

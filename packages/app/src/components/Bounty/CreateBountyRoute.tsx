@@ -1,7 +1,7 @@
 import { usePublicKey } from "@strata-foundation/react";
 import { bountyPath } from "../../constants/routes";
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CreateBounty } from "wumbo-common";
 import { AppContainer } from "../AppContainer";
 import WalletRedirect from "../Wallet/WalletRedirect";
@@ -9,14 +9,14 @@ import WalletRedirect from "../Wallet/WalletRedirect";
 export const CreateBountyRoute: React.FC = () => {
   const params = useParams<{ mint: string | undefined }>();
   const mintKey = usePublicKey(params.mint);
-  const history = useHistory();
+  const history = useNavigate();
 
   return (
     <AppContainer>
       <WalletRedirect />
       <CreateBounty
         mintKey={mintKey!}
-        onComplete={(mint) => history.push(bountyPath(mint))}
+        onComplete={(mint) => history(bountyPath(mint))}
       />
     </AppContainer>
   );

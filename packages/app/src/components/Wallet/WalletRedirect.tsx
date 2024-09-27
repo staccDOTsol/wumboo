@@ -1,6 +1,6 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import React from "react";
-import { Redirect, useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import { Routes } from "../../constants/routes";
 
 export default React.memo(() => {
@@ -9,7 +9,7 @@ export default React.memo(() => {
 
   if (!connected) {
     return (
-      <Redirect
+      <Navigate 
         to={{
           pathname: Routes.manageWallet.path,
           search: `?redirect=${location.pathname}${location.search}`,

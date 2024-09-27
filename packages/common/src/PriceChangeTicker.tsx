@@ -27,8 +27,11 @@ export const PriceChangeTicker = ({
 
   const { info: tokenBondingAcc, loading: loadingBonding } =
     useTokenBonding(tokenBonding);
+  // @ts-ignore
   const { info: baseStorage } = useTokenAccount(tokenBondingAcc?.baseStorage);
+  // @ts-ignore
   const baseMint = useMint(tokenBondingAcc?.baseMint);
+  // @ts-ignore
   const targetMint = useMint(tokenBondingAcc?.targetMint);
   const { info: curve, loading: loadingCurve } = useCurve(
     // @ts-ignore
@@ -50,19 +53,23 @@ export const PriceChangeTicker = ({
           baseMint
         ),
         amountAsNum(
+          // @ts-ignore
           targetMint?.supply.sub(toBN(totalTargetMintChange, targetMint)),
           targetMint
         ),
+        // @ts-ignore
         tokenBondingAcc.goLiveUnixTime.toNumber()
       );
     }
   }, [transactions, tokenBondingAcc, curve, baseStorage, baseMint, targetMint]);
   const currentPricing = useMemo(() => {
     if (tokenBondingAcc && curve && baseStorage && baseMint && targetMint) {
+      // @ts-ignore
       return fromCurve(
         curve,
         amountAsNum(baseStorage.amount, baseMint),
         amountAsNum(targetMint.supply, targetMint),
+        // @ts-ignore
         tokenBondingAcc.goLiveUnixTime.toNumber()
       );
     }
@@ -90,6 +97,7 @@ export const PriceChangeTicker = ({
   const currentPrice = currentPricing!.current(baseMint);
   const prevPrice = oldPricing!.current(
     baseMint,
+    // @ts-ignore
     new Date().valueOf() / 1000 - 24 * 60 * 60
   );
 

@@ -21,7 +21,7 @@ export const EditProfileRoute = React.memo(() => {
       <WumboDrawer.Content>
         <EditProfile
           ownerWalletKey={publicKey}
-          onComplete={() => history.push(routes.profile.path)}
+          onComplete={() => history(routes.profile.path)}
         />
       </WumboDrawer.Content>
       <WumboDrawer.Nav />

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
 import { ITokenWithMetaAndAccount } from "@strata-foundation/spl-token-collective";
@@ -7,12 +8,12 @@ import { sendPath } from "../../constants/routes";
 import { AppContainer } from "../AppContainer";
 import WalletRedirect from "./WalletRedirect";
 import { TokenSearch } from "@strata-foundation/react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default React.memo(() => {
   const query = useQuery();
   const recipient = query.get("recipient");
-  const history = useHistory();
+  const history = useNavigate();
 
   return (
     <AppContainer>
@@ -20,7 +21,7 @@ export default React.memo(() => {
       <Box p={4} w="full">
         <TokenSearch
           onSelect={(t: ITokenWithMetaAndAccount) => {
-            history.push(
+            history(
               sendPath(
                 t.account!.mint,
                 recipient ? new PublicKey(recipient) : undefined

@@ -1,10 +1,9 @@
-// @ts-nocheck
 import { Flex } from "@chakra-ui/react";
 import { PublicKey } from "@solana/web3.js";
 import { SplTokenCollective } from "@strata-foundation/spl-token-collective";
 import React from "react";
 import { Toaster } from "react-hot-toast";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes as Switch, useLocation } from "react-router-dom";
 import { profilePath, Routes } from "../constants/routes";
 import { CreateBountyRoute } from "./Bounty/CreateBountyRoute";
 import { EditBountyRoute } from "./Bounty/EditBountyRoute";
@@ -33,7 +32,7 @@ const LegacyAppRouteRedirect: React.FC = () => {
   const { pathname, search } = useLocation();
   const sanitizedPathname = pathname.replace("/app", "") + search;
 
-  return <Redirect to={sanitizedPathname} />;
+  return <Navigate to={sanitizedPathname} />;
 };
 
 export const App: React.FC = () => (
@@ -43,45 +42,48 @@ export const App: React.FC = () => (
 
       <Workspace>
         <Switch>
-          <Route path={Routes.relink.path} component={RelinkRoute} />
+          <Route path={Routes.relink.path} element={<RelinkRoute />} />
           <Route
             path={Routes.claimedOptOut.path}
-            component={ClaimedOptOutRoute}
+            element={<ClaimedOptOutRoute />}
           />
-          <Route path={Routes.optOut.path} component={OptOutRoute} />
-          <Route path={Routes.claim.path} component={ClaimRoute} />
-          <Route path={Routes.wallet.path} component={Wallet} />
-          <Route path={Routes.manageWallet.path} component={ManageWallet} />
-          <Route path={Routes.viewProfile.path} component={ViewProfileRoute} />
-          <Route path={Routes.viewNft.path} component={ViewNftRoute} />
-          <Route path={Routes.viewBounty.path} component={ViewBountyRoute} />
+          <Route path={Routes.optOut.path} element={<OptOutRoute />} />
+          <Route path={Routes.claim.path} element={<ClaimRoute />} />
+          <Route path={Routes.wallet.path} element={<Wallet />} />
+          <Route path={Routes.manageWallet.path} element={<ManageWallet />} />
+          <Route path={Routes.viewProfile.path} element={<ViewProfileRoute />} />
+          <Route path={Routes.viewNft.path} element={<ViewNftRoute />} />
+          <Route path={Routes.viewBounty.path} element={<ViewBountyRoute />} />
           <Route
             path={Routes.createBounty.path}
-            component={CreateBountyRoute}
+            element={<CreateBountyRoute />}
           />
-          <Route path={Routes.editBounty.path} component={EditBountyRoute} />
+          <Route path={Routes.editBounty.path} element={<EditBountyRoute />} />
           <Route
             path={Routes.profile.path}
-            exact
-            component={ViewProfileRoute}
+            element={<ViewProfileRoute />}
           />
-          <Route path={Routes.editProfile.path} component={EditProfileRoute} />
-          <Route path={Routes.sendSearch.path} exact component={SendSearch} />
-          <Route path={Routes.send.path} component={Send} />
-          <Route path={Routes.swap.path} component={SwapRoute} />
+          <Route path={Routes.editProfile.path} element={<EditProfileRoute />} />
+          <Route path={Routes.sendSearch.path} element={<SendSearch />} />
+          <Route path={Routes.send.path} element={<Send />} />
+          <Route path={Routes.swap.path} element={<SwapRoute />} />
           <Route
             path={Routes.swapConfirmation.path}
-            component={SwapConfirmationRoute}
+            element={<SwapConfirmationRoute />}
           />
-          <Route path={Routes.burnBeta.path} component={BurnBetaRoute} />
-          <Route path={Routes.prototype.path} component={PrototypeRoute} />
+          <Route path={Routes.burnBeta.path} element={<BurnBetaRoute />} />
+          <Route path={Routes.prototype.path} element={<PrototypeRoute />} />
           {/* catch all route redirction for legacy /app urls */}
-          <Route path="/app" component={LegacyAppRouteRedirect} />
-          <Redirect
-            from={Routes.root.path}
-            to={profilePath(
-              new PublicKey(SplTokenCollective.OPEN_COLLECTIVE_MINT_ID)
-            )}
+          <Route path="/app" element={<LegacyAppRouteRedirect />} />
+          <Route
+            path={Routes.root.path}
+            element={
+              <Navigate
+                to={profilePath(
+                  new PublicKey(SplTokenCollective.OPEN_COLLECTIVE_MINT_ID)
+                )}
+              />
+            }
           />
         </Switch>
         <Toaster

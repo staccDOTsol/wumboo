@@ -1,6 +1,6 @@
 import React from "react";
 import { IconButton, Flex, VStack, Icon } from "@chakra-ui/react";
-import { ITokenWithMeta } from "trata-foundation-spl-utils-2";
+import { ITokenWithMeta } from "@strata-foundation/spl-utils";
 import { Nft } from "./Nft";
 
 export const NftSmallView = React.memo(

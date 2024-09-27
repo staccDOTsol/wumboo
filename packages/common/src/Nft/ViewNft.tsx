@@ -10,7 +10,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { HiOutlineArrowsExpand } from "react-icons/hi";
-import { MetadataCategory } from "trata-foundation-spl-utils-2";
+import { MetadataCategory } from "@strata-foundation/spl-utils";
 import { PublicKey } from "@solana/web3.js";
 import { useTokenMetadata, useErrorHandler } from "strata-foundation-react-2";
 import { Creator, GetCreatorLink } from "./";

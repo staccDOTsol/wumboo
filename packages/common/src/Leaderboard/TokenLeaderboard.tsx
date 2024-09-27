@@ -63,7 +63,9 @@ const Element = React.memo(
           mint &&
           amountAsNum(tokenAccount.amount, mint).toFixed(2)
         }
+        // @ts-ignore
         onClick={() => onClick && onClick(tokenRef?.mint, handle)}
+        // @ts-ignore
         mint={tokenRef?.mint}
       />
     );
@@ -80,8 +82,10 @@ export const TokenLeaderboard = React.memo(
   }) => {
     const { wallet, publicKey } = useWallet();
     const { info: tokenBondingAcc } = useTokenBonding(tokenBonding);
+    // @ts-ignore
     const { result: ata } = useAssociatedTokenAddress(
       publicKey,
+      // @ts-ignore
       tokenBondingAcc?.targetMint
     );
     const client = useApolloClient();

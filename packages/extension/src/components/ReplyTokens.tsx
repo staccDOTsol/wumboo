@@ -27,7 +27,7 @@ import {
   getTwitterTld,
   useTwitterTld,
 } from "wumbo-common";
-import { SplTokenCollective } from "@strata-foundation/spl-token-collective";
+import { SplTokenCollective } from "strata-foundation-spl-token-collective-2";
 import {
   useStrataSdks,
   useTokenRefForName,

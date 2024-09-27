@@ -7,7 +7,7 @@ import {
   ModalCloseButton,
   PortalProps,
 } from "@chakra-ui/react";
-import { ITokenWithMeta } from "trata-foundation-spl-utils-2";
+import { ITokenWithMeta } from "@strata-foundation/spl-utils";
 import { Nft } from "./Nft";
 
 export const ExpandedNft = ({

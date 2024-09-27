@@ -32,7 +32,7 @@ export const SwapRoute = () => {
           baseMint={baseMint}
           targetMint={targetMint}
           onTradingMintsChange={({ base, target }: { base: any; target: any }) =>
-            history.push(swapPath(tokenBondingKey!, base, target))
+            history(swapPath(tokenBondingKey!, base, target))
           }
         />
       </WumboDrawer.Content>

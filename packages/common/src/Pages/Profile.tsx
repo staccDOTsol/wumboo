@@ -60,7 +60,7 @@ import { NftListRaw } from "../Nft";
 import { Spinner } from "../Spinner";
 import { StatCard } from "../StatCard";
 import { useQuery, useReverseTwitter, useTwitterOwner } from "../utils";
-import { ITokenWithMeta } from "trata-foundation-spl-utils-2";
+import { ITokenWithMeta } from "@strata-foundation/spl-utils";
 import { Bounties } from "../Bounty/Bounties";
 
 interface ISocialTokenTabsProps {

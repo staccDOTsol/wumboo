@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAsync } from "react-async-hook";
 import { useForm } from "react-hook-form";
 import { PublicKey, Transaction } from "@solana/web3.js";
@@ -50,7 +50,7 @@ import { Notification } from "../Notification";
 import { Spinner } from "../Spinner";
 import { Avatar } from "../Avatar";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { SplTokenMetadata } from "trata-foundation-spl-utils-2";
+import { SplTokenMetadata } from "@strata-foundation/spl-utils";
 import { useQuery } from "../utils";
 
 type FormValues = { amount: number; recipient: string };
@@ -60,7 +60,7 @@ export const Send = ({ finishRedirectUrl }: { finishRedirectUrl: string }) => {
   const recipientRaw = query.get("recipient");
 
   const { handleErrors } = useErrorHandler();
-  const history = useHistory();
+  const history = useNavigate();
   const params = useParams<{ mint: string | undefined }>();
   const mint = usePublicKey(params.mint);
   const { publicKey } = useWallet();
@@ -186,7 +186,7 @@ export const Send = ({ finishRedirectUrl }: { finishRedirectUrl: string }) => {
         onDismiss={() => toast.dismiss(t.id)}
       />
     ));
-    history.push(finishRedirectUrl);
+    history(finishRedirectUrl);
     reset();
   };
 

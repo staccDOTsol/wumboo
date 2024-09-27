@@ -28,12 +28,12 @@ export const Wallet = () => {
         <Box>
           <WalletRedirect />
           <CommonWallet
-            onSendClick={() => history.push(routes.sendSearch.path)}
+            onSendClick={() => history(routes.sendSearch.path)}
             wumLeaderboardLink={publicKey ? wumNetWorthPath(publicKey) : ""}
             solLink={solLink}
             onSelect={(t) => {
               if (t.account) {
-                history.push(viewProfilePath(t.account.mint));
+                history(viewProfilePath(t.account.mint));
               }
             }}
           />

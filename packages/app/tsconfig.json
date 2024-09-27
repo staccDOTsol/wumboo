@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
+    "target": "ES5",
+    "module": "ESNext",
     "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "module": "esnext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
+    "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist/lib",
     "sourceMap": true,
-    "strict": true,
-    "target": "es6",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -29,8 +29,7 @@
     "noEmit": true
   },
   "include": [
-    "src",
-    
+    "src"
   ],
   "exclude": [
     "dist",

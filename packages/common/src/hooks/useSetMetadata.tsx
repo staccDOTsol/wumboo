@@ -7,7 +7,7 @@ import {
   useTokenMetadata,
   useTokenRef,
 } from "strata-foundation-react-2";
-import { ARWEAVE_UPLOAD_URL, FileOrString } from "trata-foundation-spl-utils-2";
+import { ARWEAVE_UPLOAD_URL, FileOrString } from "@strata-foundation/spl-utils";
 import { Creator, DataV2 } from "@metaplex-foundation/mpl-token-metadata";
 import { useState } from "react";
 import { useAsyncCallback } from "react-async-hook";
@@ -64,6 +64,7 @@ export const useSetMetadata = (
     metadata,
     data,
     error: tokenMetadataError,
+    // @ts-ignore
   } = useTokenMetadata(tokenBonding?.targetMint);
 
   const exec = async (args: ISetMetadataArgs) => {
@@ -111,6 +112,7 @@ export const useSetMetadata = (
           setLoadingState("submit-arweave");
           arweaveLink = await tokenMetadataSdk!.getArweaveUrl({
             txid,
+            // @ts-ignore
             mint: tokenRef!.mint,
             files: presignedFiles,
             env: "mainnet-beta",
@@ -123,6 +125,7 @@ export const useSetMetadata = (
 
         let updateTokenBondingInstructions: TransactionInstruction[] = [];
         let updateTokenBondingSigners: Signer[] = [];
+        // @ts-ignore
         if (tokenRef?.authority) {
           ({
             instructions: updateTokenBondingInstructions,
@@ -140,6 +143,7 @@ export const useSetMetadata = (
           instructions: updateMetadataInstructions,
           signers: updateMetadataSigners,
         } = await tokenMetadataSdk!.updateMetadataInstructions({
+          // @ts-ignore
           metadata: tokenRef!.tokenMetadata,
           data: new DataV2({
             name: args.name,

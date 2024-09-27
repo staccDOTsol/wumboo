@@ -5,7 +5,7 @@ import {
   useMetaplexTokenMetadata,
   useWalletTokenAccounts,
 } from "strata-foundation-react-2";
-import { ITokenWithMeta } from "trata-foundation-spl-utils-2";
+import { ITokenWithMeta } from "@strata-foundation/spl-utils";
 import React from "react";
 import { Spinner } from "../Spinner";
 import { NftCard } from "./NftCard";
@@ -23,6 +23,7 @@ export const MaybeNft = React.memo(
     const metadata = useMetaplexTokenMetadata(tokenAccount.info.mint);
 
     if (
+      // @ts-ignore
       (filter && !filter(metadata)) ||
       metadata.mint?.decimals != 0 ||
       !metadata.metadata

@@ -41,13 +41,16 @@ export const useUserInfo = (name: string): UserInfoState => {
   );
   // @ts-ignore
   const { info: curve, loading: loading3 } = useCurve(tokenBonding?.curve);
-
+  // @ts-ignore
   const mint = useMint(creator && tokenBonding?.targetMint);
+  // @ts-ignore
   const coinPriceUsd = usePriceInUsd(creator?.mint);
 
   const { pricing: bondingCurve, loading: loading4 } = useBondingPricing(
+    // @ts-ignore
     creator?.tokenBonding
   );
+  // @ts-ignore
   const current = bondingCurve?.current(tokenBonding?.baseMint as any) || 0;
   const loading = useMemo(() => {
     return (
@@ -79,7 +82,9 @@ export const useUserInfo = (name: string): UserInfoState => {
         name,
         tokenRef: creator,
         mint,
+        // @ts-ignore
         tokenBonding,
+        // @ts-ignore
         curve,
         coinPrice: current,
         coinPriceUsd,

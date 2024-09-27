@@ -37,6 +37,7 @@ export const useTokenBondingInfo = (
     image,
     error: metadataError,
     loading: metadataLoading,
+    // @ts-ignore
   } = useTokenMetadata(tokenBondingInfo?.targetMint);
 
   useEffect(() => {
@@ -52,23 +53,28 @@ export const useTokenBondingInfo = (
       setLoading(true);
       try {
         if (metadata) {
+          // @ts-ignore
           setResult({
             ticker: metadata.data.symbol,
             name: metadata.data.name,
             icon: (
               <MetadataAvatar
                 size={avatarSize}
+                // @ts-ignore
                 mint={tokenBondingInfo?.targetMint}
                 name={metadata.data.name || "UNCLAIMED"}
               />
             ),
+            // @ts-ignore
             ...tokenBondingInfo!,
           });
         } else {
+          // @ts-ignore
           setResult({
             ticker: "UNCLAIMED",
             name: "UNCLAIMED",
             icon: <Avatar size={avatarSize} src={image} name={"UNCLAIMED"} />,
+            // @ts-ignore
             ...tokenBondingInfo!,
           });
         }

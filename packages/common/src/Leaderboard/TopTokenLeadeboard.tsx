@@ -36,6 +36,7 @@ const Element = React.memo(
     const lowestMint = useMemo(() => {
       const arr = pricing?.hierarchy.toArray() || [];
       if (arr.length > 0) {
+        // @ts-ignore
         return arr[arr.length - 1].tokenBonding.baseMint;
       }
     }, [pricing]);
@@ -46,11 +47,14 @@ const Element = React.memo(
 
     return (
       <UserLeaderboardElement
+        // @ts-ignore
         displayKey={tokenBonding?.targetMint}
-        amount={amount}
+        amount={amount} 
         onClick={() =>
+          // @ts-ignore
           tokenBonding && onClick && onClick(tokenBonding.targetMint)
         }
+        // @ts-ignore
         mint={tokenBonding?.targetMint}
       />
     );

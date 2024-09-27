@@ -83,8 +83,8 @@ export const Profile = () => {
       />
       <WumboDrawer.Content>
         <CommonProfile
-          onBountyCreateClick={(mint) => history.push(createBountyPath(mint))}
-          onBountyClick={(bountyMint) => history.push(bountyPath(bountyMint))}
+          onBountyCreateClick={(mint) => history(createBountyPath(mint))}
+          onBountyClick={(bountyMint) => history(bountyPath(bountyMint))}
           sendPath={sendSearchPath(
             tokenRef?.owner || twitterWallet || undefined
           )}
@@ -97,14 +97,14 @@ export const Profile = () => {
           mintKey={passedMintKey || tokenRef?.mint}
           onAccountClick={(mintKey, handle) => {
             if (handle) {
-              history.push(routes.profile.path + `?name=${handle}`);
+              history(routes.profile.path + `?name=${handle}`);
             } else if (mintKey) {
-              history.push(viewProfilePath(mintKey));
+              history(viewProfilePath(mintKey));
             }
           }}
           onTradeClick={() =>
             tokenBonding &&
-            history.push(
+            history(
               swapPath(
                 tokenBonding.publicKey,
                 tokenBonding!.baseMint,

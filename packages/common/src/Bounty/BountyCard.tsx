@@ -28,7 +28,8 @@ export const BountyCard = ({
     useTokenBondingFromMint(mintKey);
   const reserveAmount = useReserveAmount(tokenBonding?.publicKey);
   const { metadata, loading: loadingMetadata } = useTokenMetadata(
-    tokenBonding?.baseMint
+    // @ts-ignore
+    tokenBonding?.baseMint as PublicKey
   );
 
   return (

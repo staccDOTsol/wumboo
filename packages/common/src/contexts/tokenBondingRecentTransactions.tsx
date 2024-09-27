@@ -60,6 +60,7 @@ async function getRecentBondingTransactions(
     .map((txn) => {
       const serialized = txn.transaction.message;
       const baseStorageIndex = serialized.accountKeys.findIndex((i) =>
+        // @ts-ignore
         i.equals(tokenBonding.baseStorage)
       );
 
@@ -70,10 +71,12 @@ async function getRecentBondingTransactions(
 
         const preTargetBalances =
           txn.meta.preTokenBalances
+          // @ts-ignore
             ?.filter((b) => b.mint == tokenBonding.targetMint.toBase58())
             .reduce(sum, 0) || 0;
         const postTargetBalances =
           txn.meta.postTokenBalances
+          // @ts-ignore
             ?.filter((b) => b.mint == tokenBonding.targetMint.toBase58())
             .reduce(sum, 0) || 0;
 
@@ -104,8 +107,10 @@ export const TokenBondingRecentTransactionsProvider = ({
 }) => {
   const { connection } = useConnection();
   const { info: tokenBondingAcct } = useTokenBonding(tokenBonding);
+  // @ts-ignore
   const { loading, error, result } = useAsync(getRecentBondingTransactions, [
     connection,
+    // @ts-ignore
     tokenBondingAcct,
   ]);
   return (

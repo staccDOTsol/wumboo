@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useWallet } from "@solana/wallet-adapter-react";
 import {
   Flex,
@@ -22,7 +22,7 @@ export interface IClaim3Props {
 
 export const Claim3 = React.memo<IClaim3Props>(
   ({ handle, code, incrementStep, decrementStep }) => {
-    const history = useHistory();
+    const history = useNavigate();
     const [attemptedClaim, setAttemptedClaim] = useState<boolean>(false);
     const [internalError, setInternalError] = useState<undefined | Error>();
     const [isClaiming, setIsClaiming] = useState<boolean>(false);
@@ -122,7 +122,7 @@ export const Claim3 = React.memo<IClaim3Props>(
             <Button
               colorScheme="indigo"
               variant="link"
-              onClick={() => history.push("/")}
+              onClick={() => history("/")}
             >
               Cancel
             </Button>

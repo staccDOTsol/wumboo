@@ -39,7 +39,7 @@ const NftBadge = ({
         e.preventDefault();
         e.stopPropagation();
         toggleDrawer({ isOpen: true });
-        history.push(nftPath(new PublicKey(mintKey)));
+        history(nftPath(new PublicKey(mintKey)));
       }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}

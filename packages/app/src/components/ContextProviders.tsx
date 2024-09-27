@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useMemo, useCallback } from "react";
 import toast from "react-hot-toast";
 import {
@@ -15,7 +14,14 @@ import {
   SolPriceProvider,
   ErrorHandlerProvider,
   StrataSdksProvider,
+  ProviderContextProvider,
 } from "@strata-foundation/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import {
+  WalletModalProvider,
+  WalletDisconnectButton,
+  WalletMultiButton
+} from '@solana/wallet-adapter-react-ui';
 import { ApolloProvider } from "@apollo/client";
 import {
   ConnectionProvider,
@@ -33,7 +39,7 @@ export const getToken = (endpoint: string) => async () => {
   return "";
 };
 
-export const ContextProviders: React.FC = ({ children }) => {
+export const ContextProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const wallets = useMemo(() => WALLET_PROVIDERS, []);
 
   const onError = useCallback((error: Error) => {
@@ -68,9 +74,8 @@ export const ContextProviders: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <ConfigProvider>
       <ConnectionProvider
-        endpoint={SOLANA_API_URL}
+        endpoint={"https://rpc.ironforge.network/mainnet?apiKey=01HRZ9G6Z2A19FY8PR4RF4J4PW"}
         config={{
           commitment: "confirmed",
         }}
@@ -78,25 +83,27 @@ export const ContextProviders: React.FC = ({ children }) => {
         <ErrorHandlerProvider onError={onError}>
           <ApolloProvider client={wumboApi}>
             <AccountProvider commitment="confirmed">
-              <ThemeProvider>
-                <SolPriceProvider>
-                  <WalletProvider
-                    wallets={wallets}
-                    onError={console.error}
-                    autoConnect
-                  >
+              <ChakraProvider>
+                <WalletProvider
+                  wallets={wallets}
+                  onError={console.error}
+                  autoConnect
+                >
+                                  <WalletModalProvider>
+
+                 <ProviderContextProvider>
                     <StrataSdksProvider>
                       <MarketplaceSdkProvider>
                         {children}
                       </MarketplaceSdkProvider>
                     </StrataSdksProvider>
-                  </WalletProvider>
-                </SolPriceProvider>
-              </ThemeProvider>
+                  </ProviderContextProvider>
+                </WalletModalProvider>
+                </WalletProvider>
+              </ChakraProvider>
             </AccountProvider>
           </ApolloProvider>
         </ErrorHandlerProvider>
       </ConnectionProvider>
-    </ConfigProvider>
   );
 };

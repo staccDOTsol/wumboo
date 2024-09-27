@@ -5,7 +5,7 @@ import {
   ITokenBonding,
 } from "strata-foundation-spl-token-bonding-2";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface TokenPillProps {
   name?: String;
@@ -28,9 +28,11 @@ export const TokenPill = React.memo(
     const { pricing: pricingResolved } = useBondingPricing(
       tokenBonding.publicKey
     );
+    // @ts-ignore
     const fiatPrice = usePriceInUsd(tokenBonding.baseMint);
+    // @ts-ignore
     const toFiat = (a: number) => (fiatPrice || 0) * a;
-    const history = useHistory();
+    const history = useNavigate();
     const pricing = pricingPassed || pricingResolved;
 
     return (
@@ -43,7 +45,7 @@ export const TokenPill = React.memo(
           bgColor: "gray.200",
           cursor: "pointer",
         }}
-        onClick={() => detailsPath && history.push(detailsPath)}
+        onClick={() => detailsPath && history(detailsPath)}
       >
         {icon}
         <Flex
@@ -58,6 +60,7 @@ export const TokenPill = React.memo(
             <span>
               {pricing
                 ? "$" +
+                  // @ts-ignore
                   toFiat(pricing!.current(tokenBonding.baseMint) || 0).toFixed(
                     2
                   )

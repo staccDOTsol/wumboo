@@ -7,7 +7,7 @@ import {
   useProvider,
   useStrataSdks,
 } from "@strata-foundation/react";
-import { SplTokenCollective } from "@strata-foundation/spl-token-collective";
+import { SplTokenCollective } from "strata-foundation-spl-token-collective-2";
 import React, { useMemo } from "react";
 import { useAsyncCallback } from "react-async-hook";
 import { useHistory } from "react-router-dom";
@@ -81,7 +81,7 @@ export default React.memo(() => {
         SplTokenCollective.OPEN_COLLECTIVE_MINT_ID,
         mint
       ) + `?name=${query.get("name")!}`;
-    history.push(
+    history(
       routes.mintConfirmation.path +
         `?handle=${query.get("name")!}&buyLink=${buyLink}`
     );

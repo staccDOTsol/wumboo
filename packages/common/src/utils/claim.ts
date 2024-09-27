@@ -3,7 +3,7 @@ import { useProvider, useStrataSdks } from "strata-foundation-react-2";
 import { useState } from "react";
 import { useAsyncCallback } from "react-async-hook";
 import { WUMBO_IDENTITY_SERVICE_URL } from "../constants/globals";
-import { executeRemoteTxn } from "trata-foundation-spl-utils-2";
+import { executeRemoteTxn } from "@strata-foundation/spl-utils";
 
 export type CreateArgs = {
   code?: string;

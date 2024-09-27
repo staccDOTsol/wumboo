@@ -1,6 +1,5 @@
-// @ts-nocheck
 import React, { ReactNode } from "react";
-import { Link, LinkProps, useHistory, useLocation } from "react-router-dom";
+import { Link, LinkProps, useNavigate, useLocation } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -71,7 +70,7 @@ const NavLink = ({
 );
 
 export const Header: React.FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { connected, disconnect, publicKey: wallet } = useWallet();
@@ -84,14 +83,21 @@ export const Header: React.FC = () => {
   const redirectUri =
     Routes.manageWallet.path +
     `?redirect=${location.pathname}${location.search}`;
-
   const fillPath = (path: string): string => {
+    const tokenBondingKey = creatorInfo && creatorInfo.tokenBonding && creatorInfo.tokenBonding.publicKey
+      ? creatorInfo.tokenBonding.publicKey.toBase58()
+      : OPEN_BONDING.toBase58();
+    
+    const tokenRefKey = creatorInfo && creatorInfo.tokenRef && creatorInfo.tokenRef.publicKey
+      ? creatorInfo.tokenRef.publicKey.toBase58()
+      : "";
+    
+    const baseMint = twSol ? twSol.toBase58() : "";
+    
     const replacedKeys = replaceAll(path, {
-      ":tokenBondingKey":
-        creatorInfo.tokenBonding.publicKey.toBase58() ||
-        OPEN_BONDING.toBase58(),
-      ":tokenRefKey": creatorInfo.tokenRef.publicKey.toBase58() || "",
-      ":baseMint": twSol.toBase58() || "",
+      ":tokenBondingKey": tokenBondingKey,
+      ":tokenRefKey": tokenRefKey,
+      ":baseMint": baseMint,
       ":targetMint": SplTokenCollective.OPEN_COLLECTIVE_MINT_ID.toBase58(),
     });
 
@@ -127,7 +133,7 @@ export const Header: React.FC = () => {
                 w={10}
                 h={10}
                 _hover={{ cursor: "pointer" }}
-                onClick={() => history.push("/")}
+                onClick={() => navigate("/")}
               />
               <Text fontSize="xl">Wum.bo</Text>
             </HStack>
@@ -180,7 +186,7 @@ export const Header: React.FC = () => {
                 }
               />
               <MenuList color="black">
-                <MenuItem onClick={() => history.push(redirectUri)}>
+                <MenuItem onClick={() => navigate(redirectUri)}>
                   Connect
                 </MenuItem>
                 <MenuItem onClick={disconnect}>Disconnect</MenuItem>

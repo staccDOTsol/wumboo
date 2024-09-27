@@ -1,6 +1,6 @@
     // @ts-nocheck
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
@@ -36,7 +36,7 @@ export const ViewProfileRoute: React.FC = () => {
   const name = query.get("name");
   const tld = useTwitterTld();
   const passedMintKey = usePublicKey(params.mint);
-  const history = useHistory();
+  const history = useNavigate();
 
   const { handle: twitterHandle, loading: reverseTwitterLoading } =
     useReverseTwitter(publicKey || undefined);
@@ -82,8 +82,8 @@ export const ViewProfileRoute: React.FC = () => {
     <AppContainer>
       <Profile
         relinkPath={Routes.relink.path}
-        onBountyCreateClick={(mint) => history.push(createBountyPath(mint))}
-        onBountyClick={(bountyMint) => history.push(bountyPath(bountyMint))}
+        onBountyCreateClick={(mint) => history(createBountyPath(mint))}
+        onBountyClick={(bountyMint) => history(bountyPath(bountyMint))}
         sendPath={sendSearchPath(tokenRef.owner || twitterWallet || undefined)}
         collectivePath={
           tokenBonding ? profilePath(tokenBonding.baseMint) : null
@@ -94,7 +94,7 @@ export const ViewProfileRoute: React.FC = () => {
           claimLoading: false,
           linkLoading: false,
           claim: async () => {
-            history.push(Routes.claim + `?handle=${handle}`);
+            history(Routes.claim + `?handle=${handle}`);
           },
           link: async () => {
             throw new Error("Not yet supported on site");
@@ -103,14 +103,14 @@ export const ViewProfileRoute: React.FC = () => {
         mintKey={passedMintKey || tokenRef.mint}
         onAccountClick={(mintKey, handle) => {
           if (handle) {
-            history.push(Routes.profile.path + `?name=${handle}`);
+            history(Routes.profile.path + `?name=${handle}`);
           } else if (mintKey) {
-            history.push(profilePath(mintKey));
+            history(profilePath(mintKey));
           }
         }}
         onTradeClick={() =>
           tokenBonding &&
-          history.push(
+          history(
             swapPath(
               tokenBonding.publicKey,
               tokenBonding!.baseMint,

@@ -2,7 +2,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useFtxPayLink, Wallet } from "@strata-foundation/react";
 import { ITokenWithMetaAndAccount } from "@strata-foundation/spl-token-collective";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Routes, profilePath, wumNetWorthPath } from "../../constants/routes";
 import { AppContainer } from "../AppContainer";
 import WalletRedirect from "./WalletRedirect";
@@ -10,7 +10,7 @@ import WalletRedirect from "./WalletRedirect";
 export default React.memo(() => {
   const solLink = useFtxPayLink();
   const { publicKey } = useWallet();
-  const history = useHistory();
+  const history = useNavigate();
 
   return (
     <AppContainer>
@@ -19,11 +19,11 @@ export default React.memo(() => {
         wumLeaderboardLink={publicKey ? wumNetWorthPath(publicKey) : ""}
         onSelect={(t: ITokenWithMetaAndAccount) => {
           if (t.account) {
-            history.push(profilePath(t.account.mint));
+            history(profilePath(t.account.mint));
           }
         }}
         solLink={solLink}
-        onSendClick={() => history.push(Routes.sendSearch.path)}
+        onSendClick={() => history(Routes.sendSearch.path)}
       />
     </AppContainer>
   );

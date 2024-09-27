@@ -18,7 +18,7 @@ export const EditBounty: React.FC = () => {
       <WumboDrawer.Content>
         <CommonEditBounty
           mintKey={mintKey!}
-          onComplete={() => history.push(bountyPath(mintKey!))}
+          onComplete={() => history(bountyPath(mintKey!))}
         />
       </WumboDrawer.Content>
       <WumboDrawer.Nav />

@@ -15,7 +15,7 @@ export const ManageWallet = () => {
       const redirect = query.get("redirect");
       if (redirect) {
         console.log(`Redirecting to ${redirect}`);
-        history.replace(redirect);
+        history.push(redirect);
       }
     }
   }, [connected, prevConnected]);

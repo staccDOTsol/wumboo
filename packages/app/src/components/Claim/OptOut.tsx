@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "wumbo-common";
 import {
   Flex,
@@ -17,7 +17,7 @@ import { RiFocusFill } from "react-icons/ri";
 import { claimPath } from "../../constants/routes";
 
 export const OptOutRoute: React.FC = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const query = useQuery();
   const handle = query.get("handle") || undefined;
   const fiatLocked = query.get("fiatLocked") || 0;
@@ -98,7 +98,7 @@ export const OptOutRoute: React.FC = () => {
               colorScheme="indigo"
               variant="outline"
               onClick={() =>
-                history.push(claimPath({ step: "1", handle: handle! }))
+                history(claimPath({ step: "1", handle: handle! }))
               }
             >
               Claim Token

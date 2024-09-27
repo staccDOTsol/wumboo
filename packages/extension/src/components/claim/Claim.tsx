@@ -53,7 +53,7 @@ export default React.memo(() => {
           handle={name}
           redirectUri={redirectUri}
           code={code}
-          onComplete={() => history.replace(routes.editProfile.path)}
+          onComplete={() => history.push(routes.editProfile.path)}
         />
       </WumboDrawer.Content>
       <WumboDrawer.Nav />

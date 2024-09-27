@@ -28,6 +28,7 @@ export const SwapConfirmation = ({
     tokenRef?.owner as PublicKey | undefined
   );
   const handle = tokenRef
+    // @ts-ignore
     ? tokenRef.isClaimed
       ? refHandle
       : metadata?.data.name

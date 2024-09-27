@@ -22,7 +22,7 @@ export const ViewBounty: React.FC = () => {
           <CommonViewBounty
             modalRef={modalRef}
             mintKey={mintKey}
-            onEdit={() => history.push(editBountyPath(mintKey!))}
+            onEdit={() => history(editBountyPath(mintKey!))}
             getCreatorLink={(c, t, tokenRef) => {
               return tokenRef
                 ? viewProfilePath(tokenRef.mint)

@@ -17,7 +17,7 @@ import {
 } from "strata-foundation-react-2";
 import { ISwapArgs, toNumber } from "strata-foundation-spl-token-bonding-2";
 import React, { useMemo } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { WUMBO_TRANSACTION_FEE } from "../constants/globals";
 import { useConfig } from "../hooks";
 
@@ -35,7 +35,7 @@ export const Swap = ({
   manageWalletPath: string;
   swapConfirmationPath: string;
 } & Pick<any, "onTradingMintsChange">) => {
-  const history = useHistory();
+  const history = useNavigate();
   const { wallet } = useWallet();
   const { handleErrors } = useErrorHandler();
   const { info: targetTokenRef, loading: loadingTarget } =
@@ -50,6 +50,7 @@ export const Swap = ({
   const lowestMint = useMemo(() => {
     const arr = pricing?.hierarchy.toArray() || [];
     if (arr.length > 0) {
+      // @ts-ignore
       return arr[arr.length - 1].tokenBonding.baseMint;
     }
   }, [pricing]);
@@ -60,17 +61,21 @@ export const Swap = ({
     error,
     execute,
   } = useSwap({
-    async preInstructions({ tokenBonding, isBuy, amount }) {
+    async extraInstructions({ tokenBonding, isBuy, amount }) {
       if (hasFees) {
         const buyingTarget =
+        // @ts-ignore
           isBuy && tokenBonding.targetMint.equals(targetMint!);
         const sellingTarget =
+        // @ts-ignore
           !isBuy && tokenBonding.targetMint.equals(baseMint!);
         // Only inject fees on the transaction going from the collective to a social token
         if (sellingTarget || buyingTarget) {
           let priceInSol;
           if (
+            // @ts-ignore
             buyingTarget &&
+            // @ts-ignore
             tokenBonding.baseMint.equals(lowestMint!) &&
             amount
           ) {
@@ -81,8 +86,10 @@ export const Swap = ({
                 // Buying target will be a buyWithBase, selling target will be a sell target amount
                 toNumber(
                   amount,
+                  // @ts-ignore
                   (buyingTarget ? baseMintInfo : targetMintInfo)!
                 ),
+                // @ts-ignore
                 buyingTarget ? tokenBonding.baseMint : tokenBonding.targetMint,
                 lowestMint!,
                 false
@@ -129,14 +136,17 @@ export const Swap = ({
     tradingMints: { base: baseMint, target: targetMint },
     onTradingMintsChange,
     swap: (args: ISwapArgs & { ticker: string }) =>
+      // @ts-ignore
       execute(args).then(({ targetAmount }) => {
-        history.push(
+        // @ts-ignore
+        history(
           swapConfirmationPath +
             `?amount=${targetAmount}&mint=${args.targetMint}`
         );
       }),
-    onConnectWallet: () => history.push(manageWalletPath),
-    id: tokenBonding!,
+    onConnectWallet: () => history(manageWalletPath),
+    // @ts-ignore
+    tokenBondingKey: tokenBonding!,
   });
 
   return <SwapForm isSubmitting={swapping} {...swapProps} />;

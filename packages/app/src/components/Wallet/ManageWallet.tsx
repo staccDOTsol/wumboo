@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { WalletSelect } from "wumbo-common";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { AppContainer } from "../AppContainer";
 
 export default React.memo(() => {
-  const history = useHistory();
+  const history = useNavigate();
   const location = useLocation();
   const { connected } = useWallet();
 
@@ -14,7 +14,7 @@ export default React.memo(() => {
 
     if (connected && redirect) {
       console.log(`Redirecting to ${redirect}`);
-      history.replace(redirect);
+      history(redirect);
     }
   }, [connected, location, history]);
 
